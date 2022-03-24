@@ -6,13 +6,14 @@
 
   justify-content: space-between;
   color: white;
-  margin: 40px auto 0 auto;
+  margin: 40px 19px 0 19px;
 }
 
 .profile__avatar {
   border-radius: 50%;
   height: 120px;
   width: 120px;
+  margin: 0;
 }
 
 .profile__info {
@@ -63,4 +64,49 @@
   background-color: #000000;
   align-self: center;
   margin-left: 172px;
+}
+
+@media screen and (max-width: 720px) {
+  .profile {
+    flex-direction: column;
+    max-width: 282px;
+    justify-content: center;
+    margin: 40px auto 0 auto;
+    gap: 30px;
+    flex-wrap: nowrap;
+  }
+  .profile__avatar {
+    max-width: 168.75px;
+    height: 127.5px;
+    align-self: center;
+  }
+  .profile__info {
+    gap: 14px;
+    max-width: 196px;
+    justify-content: center;
+  }
+  .profile__name {
+    font-size: 22px;
+    line-height: 26.63px;
+  }
+
+  .profile__occupation {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
+  .edit-image {
+    width: 7.5px;
+    height: 7.55px;
+  }
+  /* .edit-image::after {
+    content: url('./images/');
+  }  */
+  .profile__add-button {
+    width: 100%;
+    margin: 0;
+  }
 }
