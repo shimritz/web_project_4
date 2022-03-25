@@ -9,3 +9,12 @@
   text-decoration: none;
   padding: 0;
 }
+
+@media screen and (max-width: 550px) {
+  .photos {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    /* margin: 0 auto; */
+    max-width: 550px;
+  }
+}

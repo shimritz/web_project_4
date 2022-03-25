@@ -2,6 +2,7 @@
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
+  max-width: 282px;
 }
 
 .card__image {
@@ -30,4 +31,15 @@
   height: 19px;
   margin: 0;
   align-self: center;
+}
+@media screen and (max-width: 550px) {
+  .card {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card {
+    margin: 0 19px;
+  }
 }
