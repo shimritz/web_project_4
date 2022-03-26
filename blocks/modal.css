@@ -1,0 +1,26 @@
+.modal {
+  display: none;
+  max-width: 430px;
+  min-height: 330px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 10px;
+  position: relative;
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: -40px;
+  right: -35px;
+}
+
+.modal__close-btn:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 320px) {
+  .modal__close-btn {
+    width: 26px;
+    height: 26px;
+  }
+}

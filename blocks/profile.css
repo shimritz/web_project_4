@@ -21,7 +21,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 50%;
-
   column-gap: 16px;
   margin-left: 26.5px;
 }
@@ -46,6 +45,9 @@
   background-color: #000000;
   margin-right: 0;
   border: 1px solid white;
+}
+.profile__edit-button:hover {
+  opacity: 0.8;
 }
 
 .profile__add-button {
