@@ -19,8 +19,8 @@
   align-items: center;
   width: 100%;
   flex-direction: row;
-  flex-wrap: wrap;
-  max-width: 50%;
+  flex-wrap: nowrap;
+  /* max-width: 50%; */
   column-gap: 16px;
   margin-left: 26.5px;
 }
@@ -78,7 +78,7 @@
   }
   .profile__info {
     gap: 14px;
-    max-width: 216px;
+    max-width: 230px;
     justify-content: center;
     margin: 0 auto;
     flex-wrap: wrap;

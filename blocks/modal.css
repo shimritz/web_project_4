@@ -19,6 +19,11 @@
 }
 
 @media screen and (max-width: 320px) {
+  .modal {
+    max-width: 282px;
+    min-height: 322px;
+  }
+
   .modal__close-btn {
     width: 26px;
     height: 26px;
