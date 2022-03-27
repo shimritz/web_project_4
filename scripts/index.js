@@ -17,6 +17,13 @@ const profileFormOccupationInput = profileForm.elements.occupation;
 //     profileName.textContent = inputValue;
 // })
 
+function toggleForm() {
+    profileFormNameInput.value = profileName.textContent;
+    profileFormOccupationInput.value = profileOccupation.textContent;
+     modal.style.display = "flex";
+    overlay.style.display = "block";
+}
+
 profileForm.addEventListener('submit', function (event) {
     profileName.textContent = profileFormNameInput.value;
     profileOccupation.textContent = profileFormOccupationInput.value;
@@ -25,10 +32,8 @@ profileForm.addEventListener('submit', function (event) {
     event.preventDefault();
 })
 
-openModalButton.addEventListener('click', function (event) {
-    modal.style.display = "flex";
-    overlay.style.display = "block";
-});
+openModalButton.addEventListener('click', toggleForm);
+
 
 closeModalButton.addEventListener('click', function (event) {
     modal.style.display = "none";

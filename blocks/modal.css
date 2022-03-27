@@ -1,11 +1,16 @@
 .modal {
+  position: fixed;
+  bottom: 58%;
+  left: 31%;
   display: none;
   max-width: 430px;
   min-height: 330px;
-  margin: 0 auto;
   background-color: #ffffff;
   border-radius: 10px;
-  position: relative;
+}
+
+.modal__visible {
+  display: flex;
 }
 
 .modal__close-btn {
