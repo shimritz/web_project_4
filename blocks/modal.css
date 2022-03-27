@@ -9,10 +9,6 @@
   border-radius: 10px;
 }
 
-.modal__visible {
-  display: flex;
-}
-
 .modal__close-btn {
   position: absolute;
   top: -40px;

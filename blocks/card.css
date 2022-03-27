@@ -32,6 +32,10 @@
   margin: 0;
   align-self: center;
 }
+.card__like-btn:active {
+  background-color: black;
+}
+
 @media screen and (max-width: 550px) {
   .card {
     margin: 0 auto;

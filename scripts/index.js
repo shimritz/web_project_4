@@ -5,28 +5,24 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 
 const profileName = document.querySelector(".profile__name");
-const profileOccupation = document.querySelector(".profile__occupation");
+const profileAboutMe = document.querySelector(".profile__aboutMe");
 
 //forms
 const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
-const profileFormOccupationInput = profileForm.elements.occupation;
+const profileFormAboutMeInput = profileForm.elements.aboutMe;
 
-// profileFormNameInput.addEventListener("input", function(event) {
-//     const inputValue = event.target.value;
-//     profileName.textContent = inputValue;
-// })
 
 function toggleForm() {
     profileFormNameInput.value = profileName.textContent;
-    profileFormOccupationInput.value = profileOccupation.textContent;
+    profileFormAboutMeInput.value = profileAboutMe.textContent;
      modal.style.display = "flex";
     overlay.style.display = "block";
 }
 
 profileForm.addEventListener('submit', function (event) {
     profileName.textContent = profileFormNameInput.value;
-    profileOccupation.textContent = profileFormOccupationInput.value;
+    profileAboutMe.textContent = profileFormAboutMeInput.value;
     modal.style.display = "none";
     overlay.style.display = "none";
     event.preventDefault();

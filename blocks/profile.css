@@ -46,7 +46,7 @@
   align-self: center;
 }
 
-.profile__occupation {
+.profile__aboutMe {
   width: 100%;
   font-weight: 400;
   font-size: 18px;
@@ -76,6 +76,10 @@
   background-color: #000000;
   align-self: center;
 }
+
+.profile__add-button:hover {
+  opacity: 0.6;
+}
 .profile__add-button-plus-icon {
   width: 22px;
   height: 22px;
@@ -103,7 +107,7 @@
     .profile__info {
       gap: 14px;
       max-width: 230px;
-      flex-grow: 1; /*doesnt affect the element*/
+      flex-grow: 1;
       justify-content: center;
       margin: 0 auto;
     }
@@ -115,7 +119,7 @@
       line-height: 26.63px;
     }
 
-    .profile__occupation {
+    .profile__aboutMe {
       font-size: 14px;
       line-height: 17px;
       text-align: center;
