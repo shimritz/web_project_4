@@ -13,7 +13,7 @@ const profileFormNameInput = profileForm.elements.name;
 const profileFormAboutMeInput = profileForm.elements.aboutMe;
 
 
-function toggleForm() {
+function handleProfileFormSubmit() {
     profileFormNameInput.value = profileName.textContent;
     profileFormAboutMeInput.value = profileAboutMe.textContent;
      modal.style.display = "flex";
@@ -28,7 +28,7 @@ profileForm.addEventListener('submit', function (event) {
     event.preventDefault();
 })
 
-openModalButton.addEventListener('click', toggleForm);
+openModalButton.addEventListener('click', handleProfileFormSubmit);
 
 
 closeModalButton.addEventListener('click', function (event) {
