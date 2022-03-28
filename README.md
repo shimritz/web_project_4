@@ -8,7 +8,7 @@
 - Project Technologies
 - Github Pages
 
-**Intro**
+**Intro**  
 Around The U.S. is an interactive page where users can add, remove, or like photos.
 
 **Figma**
@@ -30,4 +30,4 @@ To more beautiful images you can enter: https://unsplash.com
 
 **Github Pages**
 
-- [Link to the project on Github Pages]
+- [Link to the project on Github Pages](https://shimritz.github.io/web_project_4/)
