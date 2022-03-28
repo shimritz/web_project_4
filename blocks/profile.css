@@ -61,7 +61,7 @@
   background-color: #000000;
   margin-right: 0;
   border: 1px solid white;
-  background-image: url("/images/Vector-pencil.svg");
+  background-image: url("../images/Vector-pencil.svg");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -79,7 +79,11 @@
   color: #ffffff;
   background-color: #000000;
   align-self: center;
+<<<<<<< HEAD
   background-image: url("/images/Vector+.png");
+=======
+  background-image: url("../images/Vector+.png");
+>>>>>>> develop
   background-repeat: no-repeat;
   background-position: center;
 }
