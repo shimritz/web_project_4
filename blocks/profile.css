@@ -87,10 +87,6 @@
 .profile__add-button:hover {
   opacity: 0.6;
 }
-/* .profile__add-button-plus-icon {
-  width: 22px;
-  height: 22px;
-} */
 
 @media screen and (max-width: 1279px) {
   .profile {
@@ -143,20 +139,9 @@
     width: 18px;
     height: 18px;
   }
-  /* .edit-image {
-    width: 7.5px;
-    height: 7.5px;
-  } */
 
   .profile__add-button {
     width: 282px;
     margin: 0;
-    /* width: 16px;
-    height: 16px; */
   }
-
-  /* .profile__add-button-plus-icon {
-    width: 16px;
-    height: 16px;
-  } */
 }
