@@ -1,0 +1,12 @@
+.page {
+  background-color: #000000;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.page__content {
+  padding: 0;
+  max-width: 880px;
+  margin: 0 auto;
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Around The U.S." />
+    <meta name="keywords" content="photos" />
+    <meta name="author" content="shimrit breef ziskand" />
+    <title>Around The U.S.</title>
+    <link rel="stylesheet" href="pages/index.css" />
+    <script src="scripts/index.js" defer></script>
+  </head>
+  <body class="page">
+    <header class="header">
+      <img
+        class="header__logo"
+        src="./images/Vectorlogo.svg"
+        alt="Around The U.S."
+      />
+    </header>
+
+    <main class="page__content">
+      <section class="profile">
+        <img
+          class="profile__avatar"
+          src="./images/profile_photo-image(1).jpg"
+          alt="user photo"
+        />
+        <div class="profile__info">
+          <div class="profile__name-container">
+            <h2 class="profile__name">Jacques Cousteau</h2>
+            <button class="profile__edit-button"></button>
+          </div>
+          <p class="profile__aboutMe">Explorer</p>
+        </div>
+
+        <button class="profile__add-button"></button>
+      </section>
+      <div class="overlay"></div>
+      <div class="modal">
+        <img
+          class="modal__close-btn"
+          src="./images/CloseIcon(1).svg"
+          alt="close icon"
+        />
+        <form class="form" name="profile">
+          <h2 class="form__title">Edit profile</h2>
+          <div class="modal__form-control">
+            <input
+              class="form__input form__input_type_name"
+              type="text"
+              name="name"
+              required
+            />
+          </div>
+          <div class="modal__form-control">
+            <input
+              class="form__input form__input_type_aboutMe"
+              type="text"
+              name="aboutMe"
+            />
+          </div>
+
+          <button type="submit" class="modal__form-submit">Save</button>
+        </form>
+      </div>
+
+      <section class="photos">
+        <article class="card">
+          <img
+            class="card__image"
+            src="./images/Yosmetyvalley(1).jpg"
+            alt="a picture of a valley"
+          />
+          <div class="card__footer">
+            <h2 class="card__name">Yosemite Valley</h2>
+            <img
+              class="card__like-btn"
+              src="./images/heartVector(1).svg"
+              alt="like button shapes like a heart"
+            />
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            class="card__image"
+            src="./images/Lakelouis(1).jpg"
+            alt="Lake Louis"
+          />
+          <div class="card__footer">
+            <h2 class="card__name">Lake Louise</h2>
+            <img
+              class="card__like-btn"
+              src="./images/heartVector(1).svg"
+              alt="like button shapes like a heart"
+            />
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            class="card__image"
+            src="./images/Baldmountain(1).jpg"
+            alt="Bald Mountain"
+          />
+          <div class="card__footer">
+            <h2 class="card__name">Bald Mountains</h2>
+            <img
+              class="card__like-btn"
+              src="./images/heartVector(1).svg"
+              alt="like button shapes like a heart"
+            />
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            class="card__image"
+            src="./images/Latemar(1).jpg"
+            alt="Latemar"
+          />
+          <div class="card__footer">
+            <h2 class="card__name">Latemar</h2>
+            <img
+              class="card__like-btn"
+              src="./images/heartVector(1).svg"
+              alt="like button shapes like a heart"
+            />
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            class="card__image"
+            src="./images/Vanoise(1).jpg"
+            alt="Vanoise Nationa.."
+          />
+          <div class="card__footer">
+            <h2 class="card__name">Vanoise National mountain</h2>
+            <img
+              class="card__like-btn"
+              src="./images/heartVector(1).svg"
+              alt="like button shapes like a heart"
+            />
+          </div>
+        </article>
+
+        <article class="card">
+          <img
+            class="card__image"
+            src="./images/LAGODIBRAISE(1).jpg"
+            alt="Lago di Braies"
+          />
+          <div class="card__footer">
+            <h2 class="card__name">Lago di Braies</h2>
+            <img
+              class="card__like-btn"
+              src="./images/heartVector(1).svg"
+              alt="like button shapes like a heart"
+            />
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyrights">&copy; 2022 Around The U.S.</p>
+    </footer>
+  </body>
+</html>

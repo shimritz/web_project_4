@@ -1,0 +1,49 @@
+.card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 282px;
+}
+
+.card__image {
+  max-width: 100%;
+  margin: 0;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card__name {
+  max-width: calc(246px - 21px);
+  color: black;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card__like-btn {
+  width: 21px;
+  height: 19px;
+  margin: 0;
+  align-self: center;
+}
+.card__like-btn:active {
+  background-color: black;
+}
+
+@media screen and (max-width: 550px) {
+  .card {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .card {
+    margin: 0 19px;
+  }
+}

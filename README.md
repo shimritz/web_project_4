@@ -2,15 +2,32 @@
 
 ### Overview
 
-* Figma
-* Images
+- Intro
+- Figma
+- Images
+- Project Technologies
+- Github Pages
+
+**Intro**
+Around The U.S. is an interactive page where users can add, remove, or like photos.
 
 **Figma**
 
-* [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
+- [Link to the project in Figma](https://www.figma.com/file/SurN1jaeEQIhuZEDMhmWWf/Sprint-4-Around-The-U.S.-desktop-mobile?node-id=0%3A1)
 
 **Images**
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
+To more beautiful images you can enter: https://unsplash.com
 
-Have fun with JavaScript!
+**Project Technologies**
+
+- HTML5 & CSS
+- Flexbox
+- Grid
+- Git
+- Media Queries
+- javascript
+
+**Github Pages**
+
+- [Link to the project on Github Pages]
