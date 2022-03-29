@@ -1,8 +1,7 @@
 .header {
   margin: 45px auto 0 auto;
   max-width: 880px;
-  border-bottom: 1px solid #545454;
-  opacity: 0.7;
+  border-bottom: rgba(84, 84, 84, 0.7) 1px solid;
 }
 
 .header__logo {

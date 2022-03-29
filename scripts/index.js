@@ -9,6 +9,7 @@ const profileAboutMe = document.querySelector(".profile__aboutMe");
 
 //forms
 const profileForm = document.forms.profile;
+// const profileForm = document.querySelector(".profile");
 const profileFormNameInput = profileForm.elements.name;
 const profileFormAboutMeInput = profileForm.elements.aboutMe;
 

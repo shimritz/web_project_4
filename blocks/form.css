@@ -12,23 +12,23 @@
   font-size: 24px;
   line-height: 29px;
   margin-top: 34px;
+  margin-bottom: 0;
   display: block;
 }
 .form__input {
+  width: 358px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 17px;
   border: none;
   border-bottom: 1px solid #000000;
-  opacity: 0.2;
+  border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
   display: block;
   width: 100%;
 }
 
-.form__input_type_name {
-  width: 358px;
-  margin: 0;
-}
-.form__input_type_occupation {
-  width: 358px;
-  margin: 0;
+.modal__form-control {
+  width: 100%;
 }
 
 .modal__form-submit {
@@ -51,5 +51,13 @@
 @media screen and (max-width: 320px) {
   .form {
     max-width: 238px;
+  }
+  .form__title {
+    font-size: 18px;
+    line-height: 21.78px;
+  }
+  .modal__form-submit {
+    font-size: 14px;
+    line-height: 17px;
   }
 }

@@ -19,4 +19,8 @@
   .footer {
     margin: 50px 19px 0 19px;
   }
+  .footer__copyrights {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
