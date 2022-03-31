@@ -18,6 +18,7 @@
 .form__input {
   width: 358px;
   margin: 0;
+  margin-top: 54px;
   font-size: 14px;
   line-height: 17px;
   border: none;
@@ -30,6 +31,8 @@
 .modal__form-submit {
   width: 100%;
   padding: 13.6px 124px 18.4px 125px;
+  margin-top: 48px;
+  margin-bottom: 36.5px;
   color: white;
   background-color: #000000;
   border-radius: 2px;
