@@ -39,6 +39,9 @@
   margin: 0;
   flex-grow: 1;
   align-self: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__about-me {

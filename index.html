@@ -30,41 +30,17 @@
         <div class="profile__info">
           <div class="profile__name-container">
             <h1 class="profile__name">Jacques Cousteau</h1>
-            <button class="profile__edit-button"></button>
+            <button type="button" class="profile__edit-button"></button>
           </div>
           <p class="profile__about-me">Explorer</p>
         </div>
 
-        <button class="profile__add-button"></button>
+        <button
+          type="button"
+          class="profile__add-button"
+          aria-label="add-btn"
+        ></button>
       </section>
-      <div class="overlay"></div>
-      <div class="modal">
-        <img
-          class="modal__close-btn"
-          src="./images/CloseIcon(1).svg"
-          alt="close icon"
-        />
-        <form class="form" name="profile">
-          <h2 class="form__title">Edit profile</h2>
-          <div class="modal__form-control">
-            <input
-              class="form__input form__input_type_name"
-              type="text"
-              name="name"
-              required
-            />
-          </div>
-          <div class="modal__form-control">
-            <input
-              class="form__input form__input_type_about-me"
-              type="text"
-              name="about-me"
-            />
-          </div>
-
-          <button type="submit" class="modal__form-submit">Save</button>
-        </form>
-      </div>
 
       <section class="photos">
         <article class="card">
@@ -75,11 +51,11 @@
           />
           <div class="card__footer">
             <h2 class="card__name">Yosemite Valley</h2>
-            <img
+            <button
+              type="button"
               class="card__like-btn"
-              src="./images/heartVector(1).svg"
-              alt="like button shapes like a heart"
-            />
+              aria-label="like button"
+            ></button>
           </div>
         </article>
 
@@ -91,11 +67,11 @@
           />
           <div class="card__footer">
             <h2 class="card__name">Lake Louise</h2>
-            <img
+            <button
+              type="button"
               class="card__like-btn"
-              src="./images/heartVector(1).svg"
-              alt="like button shapes like a heart"
-            />
+              aria-label="like button"
+            ></button>
           </div>
         </article>
 
@@ -107,11 +83,11 @@
           />
           <div class="card__footer">
             <h2 class="card__name">Bald Mountains</h2>
-            <img
+            <button
+              type="button"
               class="card__like-btn"
-              src="./images/heartVector(1).svg"
-              alt="like button shapes like a heart"
-            />
+              aria-label="like button"
+            ></button>
           </div>
         </article>
 
@@ -123,11 +99,11 @@
           />
           <div class="card__footer">
             <h2 class="card__name">Latemar</h2>
-            <img
+            <button
+              type="button"
               class="card__like-btn"
-              src="./images/heartVector(1).svg"
-              alt="like button shapes like a heart"
-            />
+              aria-label="like button"
+            ></button>
           </div>
         </article>
 
@@ -139,11 +115,11 @@
           />
           <div class="card__footer">
             <h2 class="card__name">Vanoise National mountain</h2>
-            <img
+            <button
+              type="button"
               class="card__like-btn"
-              src="./images/heartVector(1).svg"
-              alt="like button shapes like a heart"
-            />
+              aria-label="like button"
+            ></button>
           </div>
         </article>
 
@@ -155,11 +131,11 @@
           />
           <div class="card__footer">
             <h2 class="card__name">Lago di Braies</h2>
-            <img
+            <button
+              type="button"
               class="card__like-btn"
-              src="./images/heartVector(1).svg"
-              alt="like button shapes like a heart"
-            />
+              aria-label="like button"
+            ></button>
           </div>
         </article>
       </section>
@@ -167,5 +143,30 @@
     <footer class="footer">
       <p class="footer__copyrights">&copy; 2022 Around The U.S.</p>
     </footer>
+    <div class="modal">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close-btn"
+          aria-label="close-button"
+        ></button>
+        <form class="form" name="profile">
+          <h2 class="form__title">Edit profile</h2>
+          <input
+            class="form__input form__input_type_name"
+            type="text"
+            name="name"
+            required
+          />
+          <input
+            class="form__input form__input_type_about-me"
+            type="text"
+            name="aboutMe"
+          />
+
+          <button type="submit" class="modal__form-submit">Save</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

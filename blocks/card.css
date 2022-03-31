@@ -31,12 +31,19 @@
   height: 19px;
   margin: 0;
   align-self: center;
+  background-image: url("../images/heartVector(1).svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  color: inherit;
+  background-color: transparent;
 }
 .card__like-btn:active {
   background-image: url("../images/Unionheart.svg");
 }
 .card__like-btn:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 550px) {

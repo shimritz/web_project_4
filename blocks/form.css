@@ -27,10 +27,6 @@
   width: 100%;
 }
 
-.modal__form-control {
-  width: 100%;
-}
-
 .modal__form-submit {
   width: 100%;
   padding: 13.6px 124px 18.4px 125px;
@@ -46,6 +42,7 @@
 
 .modal__form-submit:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 320px) {
