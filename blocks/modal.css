@@ -12,18 +12,14 @@
 
 .modal__container {
   position: relative;
-  display: none;
+  display: flex;
   background-color: #ffffff;
   border-radius: 10px;
   justify-content: center;
-  max-width: 430px;
+  min-width: 430px;
 }
 
-.modal__open {
-  display: flex;
-}
-
-.modal__container-open {
+.modal_open {
   display: flex;
 }
 
@@ -45,9 +41,9 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 530px) {
   .modal__container {
-    max-width: 282px;
+    min-width: 282px;
   }
 
   .modal__close-btn {

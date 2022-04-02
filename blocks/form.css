@@ -22,13 +22,12 @@
   font-size: 14px;
   line-height: 17px;
   border: none;
-  border-bottom: 1px solid #000000;
   border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
   display: block;
   width: 100%;
 }
 
-.modal__form-submit {
+.form__submit {
   width: 100%;
   padding: 13.6px 124px 18.4px 125px;
   margin-top: 48px;
@@ -43,7 +42,7 @@
   border: none;
 }
 
-.modal__form-submit:hover {
+.form__submit:hover {
   opacity: 0.8;
   cursor: pointer;
 }
@@ -52,12 +51,14 @@
   .form {
     max-width: 238px;
   }
+
   .form__title {
     font-size: 18px;
     line-height: 21.78px;
   }
-  .modal__form-submit {
+  .form__submit {
     font-size: 14px;
     line-height: 17px;
+    padding: 14px 100px;
   }
 }
