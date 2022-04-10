@@ -9,7 +9,7 @@
     <meta name="author" content="shimrit breef ziskand" />
     <title>Around The U.S.</title>
     <link rel="stylesheet" href="pages/index.css" />
-    <script src="scripts/index.js" defer></script>
+    <script src="scripts/index.js" async></script>
   </head>
   <body class="page">
     <header class="header">
@@ -43,7 +43,9 @@
       </section>
 
       <section class="photos">
-        <article class="card">
+        <!-- TODe: remove -->
+
+        <!-- <article class="card">
           <img
             class="card__image"
             src="./images/Yosmetyvalley(1).jpg"
@@ -137,7 +139,9 @@
               aria-label="like button"
             ></button>
           </div>
-        </article>
+        </article> -->
+
+        <!-- TODo: remove -->
       </section>
     </main>
     <footer class="footer">
@@ -168,5 +172,19 @@
         </form>
       </div>
     </div>
+    <template id="card-template">
+      <article class="card">
+        <img class="card__image" src="" alt="a picture of a valley" />
+        <!-- <div class="card__image"></div> -->
+        <div class="card__footer">
+          <h2 class="card__name"></h2>
+          <button
+            type="button"
+            class="card__like-btn"
+            aria-label="like button"
+          ></button>
+        </div>
+      </article>
+    </template>
   </body>
 </html>
