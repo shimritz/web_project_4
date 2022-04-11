@@ -149,7 +149,7 @@
     </footer>
 
     <!-- form-edit -->
-    <div class="modal">
+    <div class="modal modal_type_profile">
       <div class="modal__container">
         <button
           type="button"
@@ -176,25 +176,27 @@
     </div>
 
     <!-- form-add -->
-    <div class="modal_type_add-card">
+    <div class="modal modal_type_add-card">
       <div class="modal__container">
         <button
           type="button"
           class="modal__close-btn modal__close-btn_add-card"
           aria-label="close-button"
         ></button>
-        <form class="form" name="profile">
-          <h2 class="form__title">Edit profile</h2>
+        <form class="form" name="addNewCard">
+          <h2 class="form__title">New Place</h2>
           <input
             class="form__input form__input_type_name"
             type="text"
             name="name"
             required
+            placeholder="Title"
           />
           <input
-            class="form__input form__input_type_about-me"
-            type="text"
-            name="aboutMe"
+            class="form__input form__input_type_image"
+            type="url"
+            name="image"
+            placeholder="Image URL"
           />
 
           <button type="submit" class="form__submit">Save</button>
