@@ -42,7 +42,24 @@ const profileFormAboutMeInput = profileForm.elements.aboutMe;
 //wrappers
 const cardsList = document.querySelector(".photos");
 
-// function createCardElement()
+//functions//
+
+function createCardElement(card) {
+    const cardElement = cardTemplate.cloneNode(true);
+    const cardImage = cardElement.querySelector(".card__image");
+    const cardTitle = cardElement.querySelector(".card__name");
+    cardImage.src = card.link;
+    cardTitle.textContent = card.name;
+
+    return cardElement;
+}
+
+function renderCard(card, wrapper) {
+      const cardElement = createCardElement(card);
+    wrapper.append(cardElement);
+}
+
+
 function handleProfileFormSubmit() {
     profileFormNameInput.value = profileName.textContent;
     profileFormAboutMeInput.value = profileAboutMe.textContent;
@@ -64,14 +81,4 @@ openModalButton.addEventListener('click', handleProfileFormSubmit);
 closeModalButton.addEventListener('click', closeModal)
 
 const cardTemplate = document.querySelector("#card-template").content.querySelector(".card");
-initialCards.forEach(card => {
-    const cardElement = cardTemplate.cloneNode(true);
-    const cardImage = cardElement.querySelector(".card__image");
-    const cardTitle = cardElement.querySelector(".card__name");
-
-
-    cardImage.src = card.link;
-    cardTitle.textContent = card.name;
-
-    cardsList.appendChild(cardElement);
-})
+initialCards.forEach(card => renderCard(card, cardsList));
