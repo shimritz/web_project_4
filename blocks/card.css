@@ -3,11 +3,19 @@
   border-radius: 10px;
   overflow: hidden;
   max-width: 282px;
+  height: 361px;
   /* max-height: 361px; */
 }
 
 .card__image {
-  max-width: 100%;
+  width: 282px;
+  height: 282px;
+  /* object-fit: fit; */
+
+  /* max-width: 100%; */
+  /* max-height: 282px; */
+  /* max-width: 100%; */
+  /* max-height: 120px; */
   /* background-image: url("https://code.s3.yandex.net/web-code/yosemite.jpg");
   background-size: cover; */
   /* max-height: 282px; */
