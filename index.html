@@ -199,7 +199,7 @@
             placeholder="Image URL"
           />
 
-          <button type="submit" class="form__submit">Save</button>
+          <button type="submit" class="form__submit">Create</button>
         </form>
       </div>
     </div>
@@ -207,7 +207,11 @@
     <template id="card-template">
       <article class="card">
         <img class="card__image" src="" alt="a picture of a valley" />
-
+        <button
+          type="button"
+          class="card_close card__bin-btn"
+          aria-label="delete button"
+        ></button>
         <div class="card__footer">
           <h2 class="card__name"></h2>
           <button

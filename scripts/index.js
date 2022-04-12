@@ -61,10 +61,12 @@ function createCardElement(card) {
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__name");
   const cardLikeButton = cardElement.querySelector(".card__like-btn");
+  const cardDeleteButton = cardElement.querySelector(".card__bin-btn");
   cardImage.src = card.link;
   cardTitle.textContent = card.name;
 
   cardLikeButton.addEventListener("click", activateLikeButton);
+  cardDeleteButton.addEventListener("click", () => deleteCard(cardElement));
 
   return cardElement;
 }
@@ -72,6 +74,10 @@ function createCardElement(card) {
 const activateLikeButton = (evt) => {
   const LikeButton = evt.target;
   LikeButton.classList.toggle("card__like-btn_type_selected");
+};
+
+const deleteCard = (card) => {
+  cardsList.removeChild(card);
 };
 
 function renderCard(card, wrapper) {
