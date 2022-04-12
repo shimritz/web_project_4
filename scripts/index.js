@@ -60,11 +60,19 @@ function createCardElement(card) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardTitle = cardElement.querySelector(".card__name");
+  const cardLikeButton = cardElement.querySelector(".card__like-btn");
   cardImage.src = card.link;
   cardTitle.textContent = card.name;
 
+  cardLikeButton.addEventListener("click", activateLikeButton);
+
   return cardElement;
 }
+
+const activateLikeButton = (evt) => {
+  const LikeButton = evt.target;
+  LikeButton.classList.toggle("card__like-btn_type_selected");
+};
 
 function renderCard(card, wrapper) {
   const cardElement = createCardElement(card);
