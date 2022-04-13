@@ -25,6 +25,22 @@
   display: flex;
 }
 
+.modal__container {
+  background-color: transparent;
+}
+
+.modal__container_type_preview {
+  display: flex;
+  flex-direction: column;
+}
+.modal__popup-name {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  color: white;
+  width: 291px;
+}
+
 .modal_type_add-card_open {
   display: flex;
 }
