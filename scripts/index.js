@@ -27,7 +27,7 @@ const initialCards = [
 
 //Modals
 const addCardModal = document.querySelector(".modal_type_add-card");
-
+const previewModal = document.querySelector(".modal_type_preview");
 const profileModal = document.querySelector(".modal_type_profile");
 const modalContainer = document.querySelector(".modal__container");
 
@@ -40,6 +40,9 @@ const addCardModalCloseButton = document.querySelector(
   ".modal__close-btn_add-card"
 );
 const addCardButton = document.querySelector(".profile__add-button");
+const previewModalCloseButton = document.querySelector(
+  ".modal__close-btn_preview"
+);
 const cardTitle = document.querySelector(".form__input_type_name");
 const cardImage = document.querySelector(".form__input_type_image");
 
@@ -67,6 +70,11 @@ function createCardElement(card) {
 
   cardLikeButton.addEventListener("click", activateLikeButton);
   cardDeleteButton.addEventListener("click", () => deleteCard(cardElement));
+  cardImage.addEventListener("click", function () {
+    const popupImage = previewModal.querySelector(".modal__popup-image");
+    popupImage.src = card.link;
+    previewModal.classList.add("modal_open");
+  });
 
   return cardElement;
 }
@@ -98,6 +106,7 @@ function openAddForm() {
 function closeModal() {
   addCardModal.classList.remove("modal_type_add-card_open");
   profileModal.classList.remove("modal_open");
+  previewModal.classList.remove("modal_open");
 }
 
 //event listeners//
@@ -125,6 +134,8 @@ closeModalButton.addEventListener("click", closeModal);
 
 addCardButton.addEventListener("click", openAddForm);
 addCardModalCloseButton.addEventListener("click", closeModal);
+
+previewModalCloseButton.addEventListener("click", closeModal);
 
 const cardTemplate = document
   .querySelector("#card-template")

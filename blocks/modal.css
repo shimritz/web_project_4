@@ -18,7 +18,9 @@
   justify-content: center;
   width: 430px;
 }
-
+.modal__popup-image {
+  max-width: 100%;
+}
 .modal_open {
   display: flex;
 }
