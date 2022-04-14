@@ -25,17 +25,19 @@ const initialCards = [
   },
 ];
 
-//Modals
+// Modals
 const addCardModal = document.querySelector(".modal_type_add-card");
 const previewModal = document.querySelector(".modal_type_preview");
 const profileModal = document.querySelector(".modal_type_profile");
 const modalContainer = document.querySelector(".modal__container");
 
-//buttons
+// buttons
 const profileName = document.querySelector(".profile__name");
 const profileAboutMe = document.querySelector(".profile__about-me");
 const openModalButton = document.querySelector(".profile__edit-button");
-const closeModalButton = document.querySelector(".modal__close-btn_profile");
+const profileModalCloseButton = document.querySelector(
+  ".modal__close-btn_profile"
+);
 const addCardModalCloseButton = document.querySelector(
   ".modal__close-btn_add-card"
 );
@@ -46,7 +48,7 @@ const previewModalCloseButton = document.querySelector(
 const cardTitle = document.querySelector(".form__input_type_name");
 const cardImage = document.querySelector(".form__input_type_image");
 
-//forms
+// forms
 const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormAboutMeInput = profileForm.elements.aboutMe;
@@ -54,10 +56,25 @@ const addForm = document.forms.addNewCard;
 const addFormTitleInput = addForm.elements.title;
 const addFormImageInput = addForm.elements.image;
 
-//wrappers
+// wrappers
 let cardsList = document.querySelector(".photos");
 
-//functions//
+function closeModal(modal) {
+  switch (modal) {
+    case "preview-modal":
+      previewModal.classList.remove("modal_open");
+      break;
+    case "add-card-modal":
+      addCardModal.classList.remove("modal_open");
+      break;
+    case "profile-modal":
+      profileModal.classList.remove("modal_open");
+      break;
+    default:
+      console.info("unknown modal close event");
+      break;
+  }
+}
 
 function createCardElement(card) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -81,14 +98,14 @@ function createCardElement(card) {
   return cardElement;
 }
 
-const activateLikeButton = (evt) => {
+function activateLikeButton(evt) {
   const LikeButton = evt.target;
   LikeButton.classList.toggle("card__like-btn_type_selected");
-};
+}
 
-const deleteCard = (card) => {
+function deleteCard(card) {
   cardsList.removeChild(card);
-};
+}
 
 function renderCard(card, wrapper) {
   const cardElement = createCardElement(card);
@@ -102,21 +119,14 @@ function openEditForm() {
 }
 
 function openAddForm() {
-  addCardModal.classList.add("modal_type_add-card_open");
+  addCardModal.classList.add("modal_open");
 }
 
-function closeModal() {
-  addCardModal.classList.remove("modal_type_add-card_open");
-  profileModal.classList.remove("modal_open");
-  previewModal.classList.remove("modal_open");
-}
-
-//event listeners//
-
+// listeners
 profileForm.addEventListener("submit", function (event) {
   profileName.textContent = profileFormNameInput.value;
   profileAboutMe.textContent = profileFormAboutMeInput.value;
-  closeModal();
+  closeModal(profileModal);
   event.preventDefault();
 });
 
@@ -127,19 +137,27 @@ addForm.addEventListener("submit", function (event) {
   };
   let newCard = createCardElement(card);
   cardsList.prepend(newCard);
-  closeModal();
+  closeModal(addCardModal);
   event.preventDefault();
 });
 
 openModalButton.addEventListener("click", openEditForm);
-closeModalButton.addEventListener("click", closeModal);
+
+profileModalCloseButton.addEventListener("click", () => {
+  closeModal("profile-modal");
+});
 
 addCardButton.addEventListener("click", openAddForm);
-addCardModalCloseButton.addEventListener("click", closeModal);
+addCardModalCloseButton.addEventListener("click", () => {
+  closeModal("add-card-modal");
+});
 
-previewModalCloseButton.addEventListener("click", closeModal);
+previewModalCloseButton.addEventListener("click", () => {
+  closeModal("preview-modal");
+});
 
-const cardTemplate = document
+// template
+let cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
 initialCards.forEach((card) => renderCard(card, cardsList));

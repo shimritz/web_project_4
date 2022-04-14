@@ -24,10 +24,10 @@
 .modal_open {
   display: flex;
 }
-
+/* 
 .modal__container {
   background-color: transparent;
-}
+} */
 
 .modal__container_type_preview {
   display: flex;
@@ -41,9 +41,9 @@
   width: 291px;
 }
 
-.modal_type_add-card_open {
+/* .modal_type_add-card_open {
   display: flex;
-}
+} */
 
 .modal__close-btn {
   position: absolute;
