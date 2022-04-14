@@ -76,6 +76,23 @@ function closeModal(modal) {
   }
 }
 
+function openModal(modal) {
+  switch (modal) {
+    case "preview-modal":
+      previewModal.classList.add("modal_open");
+      break;
+    case "add-card-modal":
+      addCardModal.classList.add("modal_open");
+      break;
+    case "profile-modal":
+      profileModal.classList.add("modal_open");
+      break;
+    default:
+      console.info("unknown modal open event");
+      break;
+  }
+}
+
 function createCardElement(card) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
@@ -92,7 +109,7 @@ function createCardElement(card) {
     const popupName = previewModal.querySelector(".modal__popup-name");
     popupImage.src = card.link;
     popupName.textContent = card.name;
-    previewModal.classList.add("modal_open");
+    openModal("preview-modal");
   });
 
   return cardElement;
@@ -115,18 +132,15 @@ function renderCard(card, wrapper) {
 function openEditForm() {
   profileFormNameInput.value = profileName.textContent;
   profileFormAboutMeInput.value = profileAboutMe.textContent;
-  profileModal.classList.add("modal_open");
-}
 
-function openAddForm() {
-  addCardModal.classList.add("modal_open");
+  openModal("profile-modal");
 }
 
 // listeners
 profileForm.addEventListener("submit", function (event) {
   profileName.textContent = profileFormNameInput.value;
   profileAboutMe.textContent = profileFormAboutMeInput.value;
-  closeModal(profileModal);
+  closeModal("profile-modal");
   event.preventDefault();
 });
 
@@ -137,7 +151,8 @@ addForm.addEventListener("submit", function (event) {
   };
   let newCard = createCardElement(card);
   cardsList.prepend(newCard);
-  closeModal(addCardModal);
+  closeModal("add-card-modal");
+  document.getElementById("addcardform").reset();
   event.preventDefault();
 });
 
@@ -147,7 +162,10 @@ profileModalCloseButton.addEventListener("click", () => {
   closeModal("profile-modal");
 });
 
-addCardButton.addEventListener("click", openAddForm);
+addCardButton.addEventListener("click", () => {
+  openModal("add-card-modal");
+});
+
 addCardModalCloseButton.addEventListener("click", () => {
   closeModal("add-card-modal");
 });
