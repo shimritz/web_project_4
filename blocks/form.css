@@ -24,7 +24,7 @@
   border: none;
   border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
   display: block;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .form__submit {
