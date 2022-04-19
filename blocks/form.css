@@ -27,6 +27,18 @@
   /* width: 100%; */
 }
 
+.form__input_type_name {
+  max-width: 238px;
+}
+
+.form__input_type_image {
+  max-width: 238px;
+}
+
+.form__input_type_about-me {
+  max-width: 238px;
+}
+
 .form__submit {
   width: 100%;
   padding: 13.6px 124px 18.4px 125px;
