@@ -89,7 +89,7 @@ profileForm.addEventListener("submit", function (event) {
 });
 
 addForm.addEventListener("submit", function (event) {
-  let card = {
+  const card = {
     name: addFormTitleInput.value,
     link: addFormImageInput.value,
   };
