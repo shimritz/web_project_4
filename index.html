@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="pages/index.css" />
     <script src="scripts/cards.js" defer></script>
     <script src="scripts/index.js" defer></script>
+    <script src="scripts/validate.js" defer></script>
   </head>
   <body class="page">
     <header class="header">
@@ -31,6 +32,7 @@
         <div class="profile__info">
           <div class="profile__name-container">
             <h1 class="profile__name">Jacques Cousteau</h1>
+
             <button type="button" class="profile__edit-button"></button>
           </div>
           <p class="profile__about-me">Explorer</p>
@@ -64,12 +66,19 @@
             type="text"
             name="name"
             required
+            minlength="2"
+            maxlength="40"
           />
+          <span class="popup__error_visible"></span>
           <input
             class="form__input form__input_type_about-me"
             type="text"
             name="aboutMe"
+            required
+            minlength="2"
+            maxlength="200"
           />
+          <span class="popup__error_visible"></span>
 
           <button type="submit" class="form__submit">Save</button>
         </form>
