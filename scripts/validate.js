@@ -2,7 +2,7 @@ const showInputError = (input, formElement, { errorClass }) => {
   const errorSpan = formElement.querySelector(`#${input.id}-error`);
   //add error message/class
   errorSpan.textContent = input.validationMessage;
-  input.classList.add(errorClass);
+  errorSpan.classList.add(errorClass);
 };
 
 const hideInputError = (input, formElement, { errorClass }) => {
@@ -20,13 +20,29 @@ const checkInputValidity = (formElement, input, settings) => {
   }
 };
 
+const hasValidInputs = (inputList) => {
+  return inputList.every((input) => input.validity.valid === true);
+};
+
+const toggleButton = (inputList, button, settings) => {
+  if (hasValidInputs(inputList)) {
+    button.disabled = false;
+    button.classList.remove(settings.inactiveButtonClass);
+  } else {
+    button.disabled = true;
+    button.classList.add(settings.inactiveButtonClass);
+  }
+};
+
 const setEventListeners = (formElement, settings) => {
-  const inputs = Array.from(
+  const inputList = Array.from(
     formElement.querySelectorAll(settings.inputSelector)
   );
-  inputs.forEach((input) => {
+  const submitButton = formElement.querySelector(settings.submitButtonSelector);
+  inputList.forEach((input) => {
     input.addEventListener("input", (evt) => {
       checkInputValidity(formElement, input, settings);
+      toggleButton(inputList, submitButton, settings);
     });
   });
 };
@@ -45,7 +61,7 @@ enableValidation({
   formSelector: ".form",
   inputSelector: ".form__input",
   submitButtonSelector: ".form__submit",
-  inactiveButtonClass: "popup__button_disabled", // ???????
-  inputErrorClass: "form__input_type_error", //name of the span ???
-  errorClass: "form__error_visible", //????
+  inactiveButtonClass: "form__button_disabled",
+  //   inputErrorClass: "form__input_type_error",
+  errorClass: "form__error_visible",
 });
