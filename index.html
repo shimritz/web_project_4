@@ -98,18 +98,25 @@
         <form class="form" name="addNewCard" id="addcardform">
           <h2 class="form__title">New Place</h2>
           <input
+            id="title-input"
             class="form__input form__input_type_name"
             type="text"
             name="title"
-            required
             placeholder="Title"
+            required
+            minlength="1"
+            maxlength="30"
           />
+          <span id="title-input-error"></span>
           <input
+            id="image-input"
             class="form__input form__input_type_image"
             type="url"
             name="image"
             placeholder="Image URL"
+            required
           />
+          <span id="image-input-error"></span>
 
           <button type="submit" class="form__submit">Create</button>
         </form>

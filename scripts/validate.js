@@ -6,8 +6,10 @@ const showInputError = (input, formElement, { errorClass }) => {
 };
 
 const hideInputError = (input, formElement, { errorClass }) => {
+  console.log(input);
   const errorSpan = formElement.querySelector(`#${input.id}-error`);
-  //remove error message/class
+  //   remove error message/class
+
   errorSpan.textContent = "";
   input.classList.remove(errorClass);
 };
@@ -40,7 +42,7 @@ const setEventListeners = (formElement, settings) => {
   );
   const submitButton = formElement.querySelector(settings.submitButtonSelector);
   inputList.forEach((input) => {
-    input.addEventListener("input", (evt) => {
+    input.addEventListener("input", () => {
       checkInputValidity(formElement, input, settings);
       toggleButton(inputList, submitButton, settings);
     });
