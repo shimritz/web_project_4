@@ -37,6 +37,11 @@ function closeModal(modal) {
 
 function openModal(modal) {
   modal.classList.add("modal_open");
+  modal.addEventListener("click", (evt) => {
+    if (evt.target === modal) {
+      modal.classList.remove("modal_open");
+    }
+  });
 }
 
 function createCardElement(card) {
@@ -117,7 +122,6 @@ previewModalCloseButton.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
-// template
 const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
