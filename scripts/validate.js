@@ -1,12 +1,22 @@
-const showInputError = () => {};
+const showInputError = (input, formElement, { errorClass }) => {
+  const errorSpan = formElement.querySelector(`#${input.id}-error`);
+  //add error message/class
+  errorSpan.textContent = input.validationMessage;
+  input.classList.add(errorClass);
+};
 
-const hideInputError = () => {};
+const hideInputError = (input, formElement, { errorClass }) => {
+  const errorSpan = formElement.querySelector(`#${input.id}-error`);
+  //remove error message/class
+  errorSpan.textContent = "";
+  input.classList.remove(errorClass);
+};
 
-const checkInputValidity = (input, settings) => {
+const checkInputValidity = (formElement, input, settings) => {
   if (input.validity.valid) {
-    hideInputError();
+    hideInputError(input, formElement, settings);
   } else {
-    showInputError();
+    showInputError(input, formElement, settings);
   }
 };
 
@@ -16,7 +26,7 @@ const setEventListeners = (formElement, settings) => {
   );
   inputs.forEach((input) => {
     input.addEventListener("input", (evt) => {
-      checkInputValidity(input, settings);
+      checkInputValidity(formElement, input, settings);
     });
   });
 };
@@ -36,6 +46,6 @@ enableValidation({
   inputSelector: ".form__input",
   submitButtonSelector: ".form__submit",
   inactiveButtonClass: "popup__button_disabled", // ???????
-  inputErrorClass: "popup__input_type_error", //?????
-  errorClass: "popup__error_visible",
+  inputErrorClass: "form__input_type_error", //name of the span ???
+  errorClass: "form__error_visible", //????
 });

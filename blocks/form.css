@@ -58,7 +58,13 @@
   opacity: 0.8;
   cursor: pointer;
 }
+/* .form__input_type_error {
+  border: solid red 1px;
+} */
 
+/* .form__error_visible {
+  color: red;
+} */
 @media screen and (max-width: 550px) {
   .form {
     max-width: 238px;

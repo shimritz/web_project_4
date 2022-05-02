@@ -62,6 +62,7 @@
         <form class="form" name="profile">
           <h2 class="form__title">Edit profile</h2>
           <input
+            id="name-input"
             class="form__input form__input_type_name"
             type="text"
             name="name"
@@ -69,8 +70,9 @@
             minlength="2"
             maxlength="40"
           />
-          <span class="popup__error_visible"></span>
+          <span id="name-input-error"></span>
           <input
+            id="aboutme-input"
             class="form__input form__input_type_about-me"
             type="text"
             name="aboutMe"
@@ -78,7 +80,7 @@
             minlength="2"
             maxlength="200"
           />
-          <span class="popup__error_visible"></span>
+          <span id="aboutme-input-error"></span>
 
           <button type="submit" class="form__submit">Save</button>
         </form>
