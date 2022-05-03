@@ -33,15 +33,32 @@ let cardsList = document.querySelector(".photos");
 
 function closeModal(modal) {
   modal.classList.remove("modal_open");
+  document.removeEventListener("click", () => {
+    ModalRemoverEventHandler(modal);
+  });
+  document.removeEventListener("keydown", () => {
+    ModalRemoverEventHandler(modal);
+  });
+}
+
+function ModalRemoverEventHandler(modal) {
+  const theModal = modal;
+
+  document.addEventListener("click", (evt) => {
+    if (evt.target === theModal) {
+      theModal.classList.remove("modal_open");
+    }
+  });
+  document.addEventListener("keydown", (evt) => {
+    if (evt.key === "Escape") {
+      modal.classList.remove("modal_open");
+    }
+  });
 }
 
 function openModal(modal) {
   modal.classList.add("modal_open");
-  modal.addEventListener("click", (evt) => {
-    if (evt.target === modal) {
-      modal.classList.remove("modal_open");
-    }
-  });
+  ModalRemoverEventHandler(modal);
 }
 
 function createCardElement(card) {
