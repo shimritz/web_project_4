@@ -1,3 +1,5 @@
+// import { toggleButton2 } from "./validate";
+
 // Modals
 const addCardModal = document.querySelector(".modal_type_add-card");
 const previewModal = document.querySelector(".modal_type_preview");
@@ -29,36 +31,32 @@ const addFormTitleInput = addForm.elements.title;
 const addFormImageInput = addForm.elements.image;
 
 // wrappers
-let cardsList = document.querySelector(".photos");
+const cardsList = document.querySelector(".photos");
 
 function closeModal(modal) {
   modal.classList.remove("modal_open");
-  document.removeEventListener("click", () => {
-    ModalRemoverEventHandler(modal);
-  });
-  document.removeEventListener("keydown", () => {
-    ModalRemoverEventHandler(modal);
-  });
+  document.removeEventListener("keydown", handleKeyDown);
+  document.removeEventListener("mousedown", handleMouseDown);
 }
 
-function ModalRemoverEventHandler(modal) {
-  const theModal = modal;
+function handleKeyDown(evt) {
+  const openedModal = document.querySelector(".modal_open");
 
-  document.addEventListener("click", (evt) => {
-    if (evt.target === theModal) {
-      theModal.classList.remove("modal_open");
-    }
-  });
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      modal.classList.remove("modal_open");
-    }
-  });
+  if (evt.key === "Escape" && openedModal) {
+    openedModal.classList.remove("modal_open");
+  }
+}
+
+function handleMouseDown(evt) {
+  if (evt.target.classList.contains("modal_open")) {
+    evt.target.classList.remove("modal_open");
+  }
 }
 
 function openModal(modal) {
   modal.classList.add("modal_open");
-  ModalRemoverEventHandler(modal);
+  document.addEventListener("keydown", handleKeyDown);
+  document.addEventListener("mousedown", handleMouseDown);
 }
 
 function createCardElement(card) {
@@ -68,6 +66,7 @@ function createCardElement(card) {
   const cardLikeButton = cardElement.querySelector(".card__like-btn");
   const cardDeleteButton = cardElement.querySelector(".card__bin-btn");
   cardImage.src = card.link;
+  cardImage.alt = "A beautiful view of " + card.name;
   cardTitle.textContent = card.name;
 
   cardLikeButton.addEventListener("click", toggleLikeButton);
@@ -82,8 +81,8 @@ function createCardElement(card) {
 }
 
 function toggleLikeButton(evt) {
-  const LikeButton = evt.target;
-  LikeButton.classList.toggle("card__like-btn_type_selected");
+  const likeButton = evt.target;
+  likeButton.classList.toggle("card__like-btn_type_selected");
 }
 
 function deleteCard(card) {
@@ -111,6 +110,7 @@ profileForm.addEventListener("submit", function (event) {
 });
 
 addForm.addEventListener("submit", function (event) {
+  event.preventDefault();
   const card = {
     name: addFormTitleInput.value,
     link: addFormImageInput.value,
@@ -118,7 +118,9 @@ addForm.addEventListener("submit", function (event) {
   renderCard(card, cardsList);
   closeModal(addCardModal);
   addForm.reset();
-  event.preventDefault();
+
+  const submitBtn = addForm.querySelector(".form__submit");
+  toggleButton(submitBtn);
 });
 
 openModalButton.addEventListener("click", openEditForm);
