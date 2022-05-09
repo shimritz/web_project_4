@@ -43,13 +43,16 @@ function handleKeyDown(evt) {
   const openedModal = document.querySelector(".modal_open");
 
   if (evt.key === "Escape" && openedModal) {
-    openedModal.classList.remove("modal_open");
+    closeModal(openedModal);
+    resetForm();
   }
 }
 
 function handleMouseDown(evt) {
+  const openedModal = document.querySelector(".modal_open");
   if (evt.target.classList.contains("modal_open")) {
-    evt.target.classList.remove("modal_open");
+    closeModal(openedModal);
+    resetForm();
   }
 }
 
@@ -66,13 +69,15 @@ function createCardElement(card) {
   const cardLikeButton = cardElement.querySelector(".card__like-btn");
   const cardDeleteButton = cardElement.querySelector(".card__bin-btn");
   cardImage.src = card.link;
-  cardImage.alt = "A beautiful view of " + card.name;
+  // cardImage.alt = "A beautiful view of " + card.name;
+  cardImage.alt = `A beautiful view of ${card.name}`;
   cardTitle.textContent = card.name;
 
   cardLikeButton.addEventListener("click", toggleLikeButton);
   cardDeleteButton.addEventListener("click", () => deleteCard(cardElement));
   cardImage.addEventListener("click", function () {
     popupImage.src = card.link;
+    popupImage.alt = `A beautiful view of ${card.name}`;
     popupName.textContent = card.name;
     openModal(previewModal);
   });
@@ -116,11 +121,7 @@ addForm.addEventListener("submit", function (event) {
     link: addFormImageInput.value,
   };
   renderCard(card, cardsList);
-  closeModal(addCardModal);
-  addForm.reset();
-
-  const submitBtn = addForm.querySelector(".form__submit");
-  toggleButton(submitBtn);
+  resetForm();
 });
 
 openModalButton.addEventListener("click", openEditForm);
@@ -135,6 +136,7 @@ addCardButton.addEventListener("click", () => {
 
 addCardModalCloseButton.addEventListener("click", () => {
   closeModal(addCardModal);
+  resetForm();
 });
 
 previewModalCloseButton.addEventListener("click", () => {
@@ -145,3 +147,12 @@ const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
 initialCards.forEach((card) => renderCard(card, cardsList));
+
+const resetForm = () => {
+  addForm.reset();
+  closeModal(addCardModal);
+
+  const submitBtn = addForm.querySelector(".form__submit");
+  submitBtn.disabled = true;
+  submitBtn.classList.add("form__button_disabled");
+};
