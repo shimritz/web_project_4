@@ -44,7 +44,6 @@ function handleKeyDown(evt) {
 
   if (evt.key === "Escape" && openedModal) {
     closeModal(openedModal);
-    resetForm();
   }
 }
 
@@ -52,7 +51,6 @@ function handleMouseDown(evt) {
   const openedModal = document.querySelector(".modal_open");
   if (evt.target.classList.contains("modal_open")) {
     closeModal(openedModal);
-    resetForm();
   }
 }
 
@@ -121,7 +119,8 @@ addForm.addEventListener("submit", function (event) {
     link: addFormImageInput.value,
   };
   renderCard(card, cardsList);
-  resetForm();
+  closeModal(addCardModal);
+  addForm.reset();
 });
 
 openModalButton.addEventListener("click", openEditForm);
@@ -136,7 +135,6 @@ addCardButton.addEventListener("click", () => {
 
 addCardModalCloseButton.addEventListener("click", () => {
   closeModal(addCardModal);
-  resetForm();
 });
 
 previewModalCloseButton.addEventListener("click", () => {
@@ -147,12 +145,3 @@ const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
 initialCards.forEach((card) => renderCard(card, cardsList));
-
-const resetForm = () => {
-  addForm.reset();
-  closeModal(addCardModal);
-
-  const submitBtn = addForm.querySelector(".form__submit");
-  submitBtn.disabled = true;
-  submitBtn.classList.add("form__button_disabled");
-};
