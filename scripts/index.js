@@ -18,9 +18,11 @@ const profileModal = document.querySelector(".modal_type_profile");
 const editFormValidator = new FormValidator(settings, profileModal);
 const addFormValidator = new FormValidator(settings, addCardModal);
 
-//calling the methods from th instance
+//calling the methods from the instance
 editFormValidator.enableValidation();
+
 addFormValidator.enableValidation();
+// addFormValidator.resetValidation();
 
 // buttons and other elements
 const profileName = document.querySelector(".profile__name");
@@ -72,6 +74,10 @@ function handleMouseDown(evt) {
 }
 
 function openModal(modal) {
+  const inputList = Array.from(
+    addForm.querySelectorAll(settings.inputSelector)
+  );
+  addFormValidator.resetValidation(inputList);
   modal.classList.add("modal_open");
   document.addEventListener("keydown", handleKeyDown);
   document.addEventListener("mousedown", handleMouseDown);
@@ -115,6 +121,10 @@ function renderCard(card, wrapper) {
 }
 
 function openEditForm() {
+  const inputList = Array.from(
+    profileForm.querySelectorAll(settings.inputSelector)
+  );
+  editFormValidator.resetValidation(inputList);
   profileFormNameInput.value = profileName.textContent;
   profileFormAboutMeInput.value = profileAboutMe.textContent;
 
