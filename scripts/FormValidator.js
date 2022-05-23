@@ -21,9 +21,9 @@ class FormValidator {
 
   _checkInputValidity = (input, settings) => {
     if (input.validity.valid) {
-      this._hideInputError(input, formElement, settings);
+      this._hideInputError(input, this._formElement, settings);
     } else {
-      this._showInputError(input, formElement, settings);
+      this._showInputError(input, this._formElement, settings);
     }
   };
 
@@ -36,7 +36,7 @@ class FormValidator {
 
     inputList.forEach((input) => {
       input.addEventListener("input", () => {
-        this._checkInputValidity(input, settings);
+        this._checkInputValidity(input, this._settings);
         this._toggleButtonState(inputList); //???????
       });
     });
@@ -50,7 +50,7 @@ class FormValidator {
       this._settings;
 
     const button = this._formElement.querySelector(submitButtonSelector);
-    inputList = Array.from(form.querySelectorAll(inputSelector));
+    inputList = Array.from(this._formElement.querySelectorAll(inputSelector));
 
     const isValid = this._checkIfFormValid(inputList);
 
