@@ -1,9 +1,25 @@
-// import { toggleButton2 } from "./validate";
+import FormValidator from "./FormValidator.js";
+
+const settings = {
+  formSelector: ".form",
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit",
+  inactiveButtonClass: "form__submit_disabled",
+  errorClass: "form__error_visible",
+};
 
 // Modals
 const addCardModal = document.querySelector(".modal_type_add-card");
 const previewModal = document.querySelector(".modal_type_preview");
 const profileModal = document.querySelector(".modal_type_profile");
+
+//creating instances
+const editFormValidator = new FormValidator(settings, editForm);
+const addFormValidator = new FormValidator(settings, addForm);
+
+//calling the methods from th instance
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 // buttons and other elements
 const profileName = document.querySelector(".profile__name");
