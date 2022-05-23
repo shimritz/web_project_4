@@ -50,7 +50,7 @@ class FormValidator {
       this._settings;
 
     const button = this._formElement.querySelector(submitButtonSelector);
-    const inputList = Array.from(form.querySelectorAll(inputSelector));
+    inputList = Array.from(form.querySelectorAll(inputSelector));
 
     const isValid = this._checkIfFormValid(inputList);
 
@@ -64,10 +64,10 @@ class FormValidator {
   };
 
   enableValidation(settings) {
-    formElement.addEventListener("submit", (evt) => {
+    this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    this._setEventListeners(formElement, rest);
+    this._setEventListeners(this._formElement);
   }
 }
 

@@ -1,4 +1,5 @@
 import FormValidator from "./FormValidator.js";
+import { initialCards } from "./cards.js";
 
 const settings = {
   formSelector: ".form",
@@ -14,8 +15,8 @@ const previewModal = document.querySelector(".modal_type_preview");
 const profileModal = document.querySelector(".modal_type_profile");
 
 //creating instances
-const editFormValidator = new FormValidator(settings, editForm);
-const addFormValidator = new FormValidator(settings, addForm);
+const editFormValidator = new FormValidator(settings, profileModal);
+const addFormValidator = new FormValidator(settings, addCardModal);
 
 //calling the methods from th instance
 editFormValidator.enableValidation();
