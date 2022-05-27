@@ -1,5 +1,7 @@
+import { Card } from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { initialCards } from "./cards.js";
+import { popupImage, popupName, openModal, addForm } from "./utils.js";
 
 const settings = {
   formSelector: ".form",
@@ -38,14 +40,13 @@ const addCardButton = document.querySelector(".profile__add-button");
 const previewModalCloseButton = document.querySelector(
   ".modal__close-btn_preview"
 );
-const popupImage = previewModal.querySelector(".modal__popup-image");
-const popupName = previewModal.querySelector(".modal__popup-name");
+// const popupImage = previewModal.querySelector(".modal__popup-image");
+// const popupName = previewModal.querySelector(".modal__popup-name");
 
 // forms
 const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormAboutMeInput = profileForm.elements.aboutMe;
-const addForm = document.forms.addNewCard;
 const addFormTitleInput = addForm.elements.title;
 const addFormImageInput = addForm.elements.image;
 
@@ -73,15 +74,15 @@ function handleMouseDown(evt) {
   }
 }
 
-function openModal(modal) {
-  const inputList = Array.from(
-    addForm.querySelectorAll(settings.inputSelector)
-  );
-  addFormValidator.resetValidation(inputList);
-  modal.classList.add("modal_open");
-  document.addEventListener("keydown", handleKeyDown);
-  document.addEventListener("mousedown", handleMouseDown);
-}
+// function openModal(modal) {
+//   const inputList = Array.from(
+//     addForm.querySelectorAll(settings.inputSelector)
+//   );
+//   addFormValidator.resetValidation(inputList);
+//   modal.classList.add("modal_open");
+//   document.addEventListener("keydown", handleKeyDown);
+//   document.addEventListener("mousedown", handleMouseDown);
+// }
 
 function createCardElement(card) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -115,9 +116,12 @@ function deleteCard(card) {
   cardsList.removeChild(card);
 }
 
+const cardTemplateSelector = "#card-template";
+
 function renderCard(card, wrapper) {
-  const cardElement = createCardElement(card);
-  wrapper.prepend(cardElement);
+  // const cardElement = createCardElement(card);
+  const cardElement = new Card(card, cardTemplateSelector);
+  wrapper.prepend(cardElement.getCardElement());
 }
 
 function openEditForm() {
