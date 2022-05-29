@@ -16,11 +16,12 @@ export class Card {
       .addEventListener("click", () => this._deleteCard(cardElement));
     this._cardElement
       .querySelector(".card__image")
-      .addEventListener("click", function () {
+      .addEventListener("click", () => {
         popupImage.src = this._link;
         popupImage.alt = `A beautiful view of ${this._name}`;
         popupName.textContent = this._name;
         openModal(previewModal);
+        console.log(popupImage);
       });
   }
 
@@ -33,6 +34,8 @@ export class Card {
 
   //   _toggleLikeButton = (evt) =>
   //     evt.target.classList.toggle("card__like-btn_type_selected");
+
+  // _popUpImage = () => {};
 
   _getTemplate() {
     return document

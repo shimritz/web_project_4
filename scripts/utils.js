@@ -3,9 +3,13 @@ export const popupImage = previewModal.querySelector(".modal__popup-image");
 export const popupName = previewModal.querySelector(".modal__popup-name");
 export const addForm = document.forms.addNewCard;
 
-export function openModal(modal) {
-  const inputList = Array.from(addForm.querySelectorAll(".form__input"));
-  addFormValidator.resetValidation(inputList);
+export function openModal(modal, validator) {
+  console.log(validator);
+  if (validator != null) {
+    const inputList = Array.from(addForm.querySelectorAll(".form__input"));
+    validator.resetValidation(inputList);
+  }
+
   modal.classList.add("modal_open");
   document.addEventListener("keydown", handleKeyDown);
   document.addEventListener("mousedown", handleMouseDown);

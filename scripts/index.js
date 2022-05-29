@@ -17,8 +17,8 @@ const previewModal = document.querySelector(".modal_type_preview");
 const profileModal = document.querySelector(".modal_type_profile");
 
 //creating instances
-const editFormValidator = new FormValidator(settings, profileModal);
-const addFormValidator = new FormValidator(settings, addCardModal);
+export const editFormValidator = new FormValidator(settings, profileModal);
+export const addFormValidator = new FormValidator(settings, addCardModal);
 
 //calling the methods from the instance
 editFormValidator.enableValidation();
@@ -84,28 +84,28 @@ function handleMouseDown(evt) {
 //   document.addEventListener("mousedown", handleMouseDown);
 // }
 
-function createCardElement(card) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__name");
-  const cardLikeButton = cardElement.querySelector(".card__like-btn");
-  const cardDeleteButton = cardElement.querySelector(".card__bin-btn");
-  cardImage.src = card.link;
-  // cardImage.alt = "A beautiful view of " + card.name;
-  cardImage.alt = `A beautiful view of ${card.name}`;
-  cardTitle.textContent = card.name;
+// function createCardElement(card) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImage = cardElement.querySelector(".card__image");
+//   const cardTitle = cardElement.querySelector(".card__name");
+//   const cardLikeButton = cardElement.querySelector(".card__like-btn");
+//   const cardDeleteButton = cardElement.querySelector(".card__bin-btn");
+//   cardImage.src = card.link;
+//   // cardImage.alt = "A beautiful view of " + card.name;
+//   cardImage.alt = `A beautiful view of ${card.name}`;
+//   cardTitle.textContent = card.name;
 
-  cardLikeButton.addEventListener("click", toggleLikeButton);
-  cardDeleteButton.addEventListener("click", () => deleteCard(cardElement));
-  cardImage.addEventListener("click", function () {
-    popupImage.src = card.link;
-    popupImage.alt = `A beautiful view of ${card.name}`;
-    popupName.textContent = card.name;
-    openModal(previewModal);
-  });
+//   cardLikeButton.addEventListener("click", toggleLikeButton);
+//   cardDeleteButton.addEventListener("click", () => deleteCard(cardElement));
+//   cardImage.addEventListener("click", function () {
+//     popupImage.src = card.link;
+//     popupImage.alt = `A beautiful view of ${card.name}`;
+//     popupName.textContent = card.name;
+//     openModal(previewModal, null);
+//   });
 
-  return cardElement;
-}
+//   return cardElement;
+// }
 
 function toggleLikeButton(evt) {
   const likeButton = evt.target;
@@ -132,7 +132,7 @@ function openEditForm() {
   profileFormNameInput.value = profileName.textContent;
   profileFormAboutMeInput.value = profileAboutMe.textContent;
 
-  openModal(profileModal);
+  openModal(profileModal, editFormValidator);
 }
 
 // listeners
@@ -161,7 +161,7 @@ profileModalCloseButton.addEventListener("click", () => {
 });
 
 addCardButton.addEventListener("click", () => {
-  openModal(addCardModal);
+  openModal(addCardModal, addFormValidator);
 });
 
 addCardModalCloseButton.addEventListener("click", () => {
