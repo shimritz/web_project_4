@@ -1,7 +1,7 @@
 import { Card } from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { initialCards } from "./cards.js";
-import { popupImage, popupName, openModal, addForm } from "./utils.js";
+import { popupImage, popupName, openModal } from "./utils.js";
 
 const settings = {
   formSelector: ".form",
@@ -44,6 +44,7 @@ const previewModalCloseButton = document.querySelector(
 // const popupName = previewModal.querySelector(".modal__popup-name");
 
 // forms
+const addForm = document.forms.addNewCard;
 const profileForm = document.forms.profile;
 const profileFormNameInput = profileForm.elements.name;
 const profileFormAboutMeInput = profileForm.elements.aboutMe;
