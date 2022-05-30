@@ -1,7 +1,7 @@
 import { Card } from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { initialCards } from "./cards.js";
-import { popupImage, popupName, openModal } from "./utils.js";
+import { openModal, closeModal } from "./utils.js";
 
 const settings = {
   formSelector: ".form",
@@ -54,12 +54,6 @@ const addFormImageInput = addForm.elements.image;
 // wrappers
 const cardsList = document.querySelector(".photos");
 
-function closeModal(modal) {
-  modal.classList.remove("modal_open");
-  document.removeEventListener("keydown", handleKeyDown);
-  document.removeEventListener("mousedown", handleMouseDown);
-}
-
 function handleKeyDown(evt) {
   const openedModal = document.querySelector(".modal_open");
 
@@ -73,48 +67,6 @@ function handleMouseDown(evt) {
   if (evt.target.classList.contains("modal_open")) {
     closeModal(openedModal);
   }
-}
-
-// function openModal(modal) {
-//   const inputList = Array.from(
-//     addForm.querySelectorAll(settings.inputSelector)
-//   );
-//   addFormValidator.resetValidation(inputList);
-//   modal.classList.add("modal_open");
-//   document.addEventListener("keydown", handleKeyDown);
-//   document.addEventListener("mousedown", handleMouseDown);
-// }
-
-// function createCardElement(card) {
-//   const cardElement = cardTemplate.cloneNode(true);
-//   const cardImage = cardElement.querySelector(".card__image");
-//   const cardTitle = cardElement.querySelector(".card__name");
-//   const cardLikeButton = cardElement.querySelector(".card__like-btn");
-//   const cardDeleteButton = cardElement.querySelector(".card__bin-btn");
-//   cardImage.src = card.link;
-//   // cardImage.alt = "A beautiful view of " + card.name;
-//   cardImage.alt = `A beautiful view of ${card.name}`;
-//   cardTitle.textContent = card.name;
-
-//   cardLikeButton.addEventListener("click", toggleLikeButton);
-//   cardDeleteButton.addEventListener("click", () => deleteCard(cardElement));
-//   cardImage.addEventListener("click", function () {
-//     popupImage.src = card.link;
-//     popupImage.alt = `A beautiful view of ${card.name}`;
-//     popupName.textContent = card.name;
-//     openModal(previewModal, null);
-//   });
-
-//   return cardElement;
-// }
-
-function toggleLikeButton(evt) {
-  const likeButton = evt.target;
-  likeButton.classList.toggle("card__like-btn_type_selected");
-}
-
-function deleteCard(card) {
-  cardsList.removeChild(card);
 }
 
 const cardTemplateSelector = "#card-template";

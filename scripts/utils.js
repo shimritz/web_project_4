@@ -13,6 +13,12 @@ export function openModal(modal, validator) {
   document.addEventListener("mousedown", handleMouseDown);
 }
 
+export function closeModal(modal) {
+  modal.classList.remove("modal_open");
+  document.removeEventListener("keydown", handleKeyDown);
+  document.removeEventListener("mousedown", handleMouseDown);
+}
+
 function handleKeyDown(evt) {
   const openedModal = document.querySelector(".modal_open");
 
