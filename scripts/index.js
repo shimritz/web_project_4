@@ -40,8 +40,6 @@ const addCardButton = document.querySelector(".profile__add-button");
 const previewModalCloseButton = document.querySelector(
   ".modal__close-btn_preview"
 );
-// const popupImage = previewModal.querySelector(".modal__popup-image");
-// const popupName = previewModal.querySelector(".modal__popup-name");
 
 // forms
 const addForm = document.forms.addNewCard;
@@ -54,25 +52,9 @@ const addFormImageInput = addForm.elements.image;
 // wrappers
 const cardsList = document.querySelector(".photos");
 
-function handleKeyDown(evt) {
-  const openedModal = document.querySelector(".modal_open");
-
-  if (evt.key === "Escape" && openedModal) {
-    closeModal(openedModal);
-  }
-}
-
-function handleMouseDown(evt) {
-  const openedModal = document.querySelector(".modal_open");
-  if (evt.target.classList.contains("modal_open")) {
-    closeModal(openedModal);
-  }
-}
-
 const cardTemplateSelector = "#card-template";
 
 function renderCard(card, wrapper) {
-  // const cardElement = createCardElement(card);
   const cardElement = new Card(card, cardTemplateSelector);
   wrapper.prepend(cardElement.getCardElement());
 }
@@ -81,7 +63,6 @@ function openEditForm() {
   const inputList = Array.from(
     profileForm.querySelectorAll(settings.inputSelector)
   );
-  editFormValidator.resetValidation(inputList);
   profileFormNameInput.value = profileName.textContent;
   profileFormAboutMeInput.value = profileAboutMe.textContent;
 

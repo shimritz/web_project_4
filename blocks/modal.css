@@ -19,7 +19,7 @@
   background-color: #ffffff;
   border-radius: 10px;
   justify-content: center;
-  width: 430px;
+  /* width: 430px; */
 }
 .modal__popup-image {
   max-width: 100%;
@@ -38,7 +38,9 @@
 
 .modal_type_preview .modal__container {
   background-color: transparent;
+  max-width: 75vw;
 }
+
 .modal__popup-name {
   font-size: 12px;
   font-weight: 400;
@@ -66,9 +68,9 @@
 }
 
 @media screen and (max-width: 530px) {
-  .modal__container {
+  /* .modal__container {
     width: 282px;
-  }
+  } */
 
   .modal__close-btn {
     width: 26px;
