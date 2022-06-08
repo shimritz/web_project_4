@@ -1,7 +1,12 @@
-import { Card } from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import { initialCards } from "./cards.js";
-import { openModal, closeModal } from "./utils.js";
+import "./styles/index.css";
+
+import avatarSrc from "./images/profile_photo-image(1).jpg";
+import profileLogoSrc from "./images/Vectorlogo.svg";
+
+import { Card } from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
+import { initialCards } from "../scripts/cards.js";
+import { openModal, closeModal } from "../scripts/utils.js";
 
 const settings = {
   formSelector: ".form",
@@ -10,6 +15,11 @@ const settings = {
   inactiveButtonClass: "form__submit_disabled",
   errorClass: "form__error_visible",
 };
+
+const profile__avatar = document.querySelector(".profile__avatar");
+const header_logo = document.querySelector(".header__logo");
+profile__avatar.src = avatarSrc;
+header_logo.src = profileLogoSrc;
 
 // Modals
 const addCardModal = document.querySelector(".modal_type_add-card");
@@ -110,3 +120,13 @@ const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
 initialCards.forEach((card) => renderCard(card, cardsList));
+
+console.log("Hello, World!");
+
+//inorder to check that babel works
+const numbers = [2, 3, 5];
+
+// Arrow function. How will Internet Explorer cope with it?
+const doubledNumbers = numbers.map((number) => number * 2);
+
+console.log(doubledNumbers); // 4, 6, 10
