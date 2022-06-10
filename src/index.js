@@ -7,6 +7,21 @@ import { Card } from "../scripts/Card.js";
 import FormValidator from "../scripts/FormValidator.js";
 import { initialCards } from "../scripts/cards.js";
 import { openModal, closeModal } from "../scripts/utils.js";
+// import { Section } from "../scripts/Section.js";
+
+// const section = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (data) => {
+//       render(data, wrapper) {
+//         wrapper.prepend(data);
+//       };
+//     },
+//   },
+//   wrapper
+// );
+
+// section.renderItems();
 
 const settings = {
   formSelector: ".form",
@@ -120,13 +135,3 @@ const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
 initialCards.forEach((card) => renderCard(card, cardsList));
-
-console.log("Hello, World!");
-
-//inorder to check that babel works
-const numbers = [2, 3, 5];
-
-// Arrow function. How will Internet Explorer cope with it?
-const doubledNumbers = numbers.map((number) => number * 2);
-
-console.log(doubledNumbers); // 4, 6, 10
