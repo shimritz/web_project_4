@@ -2,12 +2,6 @@ import UserInfo from "./UserInfo";
 class Popup {
   constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
-    console.log(
-      "_popupElement",
-      this._popupElement,
-      "popupSelector",
-      popupSelector
-    );
   }
 
   _handleEscClose = (evt) => {

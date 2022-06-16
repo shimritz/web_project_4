@@ -60,8 +60,6 @@ const profileForm = document.forms.profile;
 
 // wrappers
 const cardsList = document.querySelector(".photos");
-console.log("shuld be card list", cardsList);
-
 const cardTemplateSelector = "#card-template";
 
 //editprofile
@@ -101,9 +99,7 @@ const renderCard = (data, wrapper) => {
 };
 
 const generateCard = (data) => {
-  console.log("data here", data);
   return new Card(data, cardTemplateSelector, (x, y) => {
-    console.log("zzz-3", imagepopup);
     imagepopup.open(x, y);
   });
 };

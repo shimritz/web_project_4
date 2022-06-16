@@ -2,7 +2,6 @@ import { previewModal, popupImage, popupName, openModal } from "./utils.js";
 
 export class Card {
   constructor({ name, link }, cardSelector, handleCardClick) {
-    console.log("should be card name and link here", name, link);
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
@@ -37,7 +36,6 @@ export class Card {
     this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        console.log("clicked", this._name, this._link);
         this._handleCardClick(this._name, this._link);
       });
   }
