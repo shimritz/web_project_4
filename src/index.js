@@ -12,20 +12,6 @@ import PopupWithImage from "../scripts/PopupWithImage";
 import UserInfo from "../scripts/UserInfo";
 import Section from "../scripts/Section";
 
-// const section = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (data) => {
-//       render(data, wrapper) {
-//         wrapper.prepend(data);
-//       };
-//     },
-//   },
-//   wrapper
-// );
-
-// section.renderItems();
-
 const settings = {
   formSelector: ".form",
   inputSelector: ".form__input",
@@ -52,7 +38,6 @@ export const addFormValidator = new FormValidator(settings, addCardModal);
 editFormValidator.enableValidation();
 
 addFormValidator.enableValidation();
-// addFormValidator.resetValidation();
 
 // buttons and other elements
 const profileName = document.querySelector(".profile__name");
@@ -72,10 +57,6 @@ const previewModalCloseButton = document.querySelector(
 // forms
 const addForm = document.forms.addNewCard;
 const profileForm = document.forms.profile;
-const profileFormNameInput = profileForm.elements.name;
-const profileFormAboutMeInput = profileForm.elements.aboutMe;
-const addFormTitleInput = addForm.elements.title;
-const addFormImageInput = addForm.elements.image;
 
 // wrappers
 const cardsList = document.querySelector(".photos");
@@ -104,26 +85,9 @@ const addCardpopupWithForm = new PopupWithForm(
       name: data.title,
       link: data.image,
     });
-    // const cardElement = new Card(card, cardTemplateSelector, () => {
-    //   imagepopup.open(card.name, card.link);
-    // });
 
     section.addItem(cardElement.getCardElement());
   }
-
-  // (data) => {
-  //   const cardList = new Section({
-  //     items: initialCards,
-  //     renderer: (data) => {
-  //       const card = new Card({ data });
-  //     },
-  //   });
-  // const card = {
-  //   name: addFormTitleInput.value,
-  //   link: addFormImageInput.value,
-  // };
-  // return card;
-  // }
 );
 addCardpopupWithForm.setEventListeners();
 
@@ -131,24 +95,7 @@ addCardpopupWithForm.setEventListeners();
 const imagepopup = new PopupWithImage(".modal_type_preview");
 imagepopup.setEventListeners();
 
-// function handleImagePreview(name, link) {
-//   imagepopup.open(name, link);
-// }
-
-// addForm.addEventListener("submit", function (event) {
-//   event.preventDefault();
-//   const card = {
-//     name: addFormTitleInput.value,
-//     link: addFormImageInput.value,
-//   };
-//   renderCard(card, cardsList);
-//   closeModal(addCardModal);
-//   addForm.reset();
-// });
 const renderCard = (data, wrapper) => {
-  //   console.log("cardX", card);
-  //   console.log("wrapperX", wrapper);
-  // const cardElement =
   const card = generateCard(data);
   wrapper.prepend(card.getCardElement());
 };
@@ -174,45 +121,11 @@ const section = new Section(
 
 section.renderItems();
 
-// function openEditForm() {
-//   const inputList = Array.from(
-//     profileForm.querySelectorAll(settings.inputSelector)
-//   );
-//   profileFormNameInput.value = profileName.textContent;
-//   profileFormAboutMeInput.value = profileAboutMe.textContent;
-
-//   openModal(profileModal, editFormValidator);
-// }
-
-// listeners
-// profileForm.addEventListener("submit", function (event) {
-//   profileName.textContent = profileFormNameInput.value;
-//   profileAboutMe.textContent = profileFormAboutMeInput.value;
-//   closeModal(profileModal);
-//   event.preventDefault();
-// });
-
-// addForm.addEventListener("submit", function (event) {
-//   event.preventDefault();
-//   const card = {
-//     name: addFormTitleInput.value,
-//     link: addFormImageInput.value,
-//   };
-//   renderCard(card, cardsList);
-//   closeModal(addCardModal);
-//   addForm.reset();
-// });
-
 openModalButton.addEventListener("click", () => editModal.open());
 
 profileModalCloseButton.addEventListener("click", () => {
-  closeModal(profileModal);
-  // profileModal.close();
+  editModal.close();
 });
-
-// addCardButton.addEventListener("click", () => {
-//   openModal(addCardModal, addFormValidator);
-// });
 
 addCardButton.addEventListener("click", () => {
   addCardpopupWithForm.open();
@@ -223,10 +136,5 @@ addCardModalCloseButton.addEventListener("click", () => {
 });
 
 previewModalCloseButton.addEventListener("click", () => {
-  closeModal(previewModal);
+  imagepopup.close();
 });
-
-// const cardTemplate = document
-//   .querySelector("#card-template")
-//   .content.querySelector(".card");
-// initialCards.forEach((card) => renderCard(card, cardsList));

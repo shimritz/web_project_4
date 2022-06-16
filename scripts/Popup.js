@@ -41,10 +41,6 @@ class Popup {
       .addEventListener("click", () => {
         this.close();
       });
-
-    // this._popupElement.addEventListener("click", (evt) => {
-    //   if(!evt.target.closest("modal__container"))
-    // })
   }
 }
 

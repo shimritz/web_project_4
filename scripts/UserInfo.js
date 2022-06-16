@@ -14,8 +14,6 @@ class UserInfo {
   setUserInfo() {
     document.querySelector(".profile__name").textContent = this._name;
     document.querySelector(".profile__about-me").textContent = this._job;
-
-    //  this._cardElement.querySelector(".card__name").textContent = this._name;
   }
 }
 
