@@ -1,3 +1,4 @@
+import UserInfo from "./UserInfo";
 class Popup {
   constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
@@ -15,14 +16,24 @@ class Popup {
     }
   };
 
-  open = () => {
+  open() {
+    if (this._popupElement.classList.contains("modal_type_profile")) {
+      const existingUser = UserInfo.getUserInfo();
+
+      document.querySelector(".form__input_type_name").value =
+        existingUser.name;
+      document.querySelector(".form__input_type_about-me").value =
+        existingUser.aboutMe;
+    }
+
     this._popupElement.classList.add("modal_open");
     document.addEventListener("keydown", this._handleEscClose);
-  };
-  close = () => {
+  }
+
+  close() {
     this._popupElement.classList.remove("modal_open");
     document.removeEventListener("keydown", this._handleEscClose);
-  };
+  }
 
   setEventListeners() {
     this._popupElement

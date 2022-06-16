@@ -86,9 +86,11 @@ const cardTemplateSelector = "#card-template";
 //editprofile
 const editModal = new PopupWithForm(".modal_type_profile", (data) => {
   const profiledata = new UserInfo({
-    name: profileFormNameInput, //name
-    job: profileFormAboutMeInput, //job
+    name: data.name, //name
+    job: data.aboutMe, //job
   });
+
+  // profiledata.getUserInfo();
   profiledata.setUserInfo();
 });
 editModal.setEventListeners();
@@ -105,8 +107,6 @@ const addCardpopupWithForm = new PopupWithForm(
     // const cardElement = new Card(card, cardTemplateSelector, () => {
     //   imagepopup.open(card.name, card.link);
     // });
-
-    console.log("problem is here 2, section", section);
 
     section.addItem(cardElement.getCardElement());
   }
@@ -127,9 +127,13 @@ const addCardpopupWithForm = new PopupWithForm(
 );
 addCardpopupWithForm.setEventListeners();
 
-//popupWithImage
+// popupWithImage
 const imagepopup = new PopupWithImage(".modal_type_preview");
 imagepopup.setEventListeners();
+
+// function handleImagePreview(name, link) {
+//   imagepopup.open(name, link);
+// }
 
 // addForm.addEventListener("submit", function (event) {
 //   event.preventDefault();
@@ -151,8 +155,9 @@ const renderCard = (data, wrapper) => {
 
 const generateCard = (data) => {
   console.log("data here", data);
-  return new Card(data, cardTemplateSelector, (text, link) => {
-    imagepopup.open(text, link);
+  return new Card(data, cardTemplateSelector, (x, y) => {
+    console.log("zzz-3", imagepopup);
+    imagepopup.open(x, y);
   });
 };
 
@@ -180,12 +185,12 @@ section.renderItems();
 // }
 
 // listeners
-profileForm.addEventListener("submit", function (event) {
-  profileName.textContent = profileFormNameInput.value;
-  profileAboutMe.textContent = profileFormAboutMeInput.value;
-  closeModal(profileModal);
-  event.preventDefault();
-});
+// profileForm.addEventListener("submit", function (event) {
+//   profileName.textContent = profileFormNameInput.value;
+//   profileAboutMe.textContent = profileFormAboutMeInput.value;
+//   closeModal(profileModal);
+//   event.preventDefault();
+// });
 
 // addForm.addEventListener("submit", function (event) {
 //   event.preventDefault();

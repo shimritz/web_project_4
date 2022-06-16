@@ -4,16 +4,18 @@ class UserInfo {
     this._job = job;
   }
 
-  getUserInfo() {
+  static getUserInfo() {
     return {
-      name: document.querySelector(".form__input_type_name").textContent,
-      aboutMe: document.querySelector(".form__input_type_about-me").textContent,
+      name: document.querySelector(".profile__name").textContent,
+      aboutMe: document.querySelector(".profile__about-me").textContent,
     };
   }
 
-  setUserInfo(name, job) {
-    document.querySelector(".form__input_type_name").textContent = name;
-    document.querySelector(".form__input_type_about-me").textContent = job;
+  setUserInfo() {
+    document.querySelector(".profile__name").textContent = this._name;
+    document.querySelector(".profile__about-me").textContent = this._job;
+
+    //  this._cardElement.querySelector(".card__name").textContent = this._name;
   }
 }
 

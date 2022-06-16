@@ -36,9 +36,10 @@ export class Card {
       .addEventListener("click", () => this._deleteCard());
     this._cardElement
       .querySelector(".card__image")
-      .addEventListener("click", () =>
-        this._handleCardClick(this._name, this._link)
-      );
+      .addEventListener("click", () => {
+        console.log("clicked", this._name, this._link);
+        this._handleCardClick(this._name, this._link);
+      });
   }
 
   _toggleLikeButton(evt) {
