@@ -1,5 +1,3 @@
-import { previewModal, popupImage, popupName, openModal } from "./utils.js";
-
 export class Card {
   constructor({ name, link }, cardSelector, handleCardClick) {
     this._name = name;
@@ -19,6 +17,9 @@ export class Card {
     this._cardElement = this._getTemplate();
 
     this._cardElement.querySelector(".card__image").src = this._link;
+    this._cardElement.querySelector(
+      ".card__image"
+    ).alt = `Photo of ${this._name}`;
     this._cardElement.querySelector(".card__name").textContent = this._name;
 
     this._setEventListener();
@@ -45,12 +46,8 @@ export class Card {
     likeButton.classList.toggle("card__like-btn_type_selected");
   }
 
-  _deleteCard = () => this._cardElement.remove();
-
-  // _popUpImage = () => {
-  //   popupImage.src = this._link;
-  //   popupImage.alt = `A beautiful view of ${this._name}`;
-  //   popupName.textContent = this._name;
-  //   openModal(previewModal);
-  // };
+  _deleteCard = () => {
+    this._cardElement.remove();
+    this._cardElement = null;
+  };
 }

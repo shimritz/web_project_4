@@ -1,4 +1,3 @@
-import UserInfo from "./UserInfo";
 class Popup {
   constructor(popupSelector) {
     this._popupElement = document.querySelector(popupSelector);
@@ -10,16 +9,13 @@ class Popup {
     }
   };
 
-  open() {
-    if (this._popupElement.classList.contains("modal_type_profile")) {
-      const existingUser = UserInfo.getUserInfo();
-
-      document.querySelector(".form__input_type_name").value =
-        existingUser.name;
-      document.querySelector(".form__input_type_about-me").value =
-        existingUser.aboutMe;
+  _closePopupOnRemoteClick = (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      this.close();
     }
+  };
 
+  open() {
     this._popupElement.classList.add("modal_open");
     document.addEventListener("keydown", this._handleEscClose);
   }
@@ -35,7 +31,17 @@ class Popup {
       .addEventListener("click", () => {
         this.close();
       });
+    this._popupElement.addEventListener("mousedown", (evt) => {
+      this._closePopupOnRemoteClick(evt);
+    });
+
+    // when close a popup
+    this._popupElement.removeEventListener("mousedown", (evt) => {
+      this._closePopupOnRemoteClick;
+    });
   }
 }
+
+// when open a popup
 
 export default Popup;
