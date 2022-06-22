@@ -1,15 +1,15 @@
-import "./pages/index.css";
+import "./index.css";
 
-import avatarSrc from "./images/profile_photo-image(1).jpg";
-import profileLogoSrc from "./images/Vectorlogo.svg";
+import avatarSrc from "../images/profile_photo-image(1).jpg";
+import profileLogoSrc from "../images/Vectorlogo.svg";
 
-import { Card } from "./components/Card.js";
-import FormValidator from "./components/FormValidator.js";
-import { initialCards } from "./components/cards.js";
-import PopupWithForm from "./components/PopupWithForm";
-import PopupWithImage from "./components/PopupWithImage";
-import UserInfo from "./components/UserInfo";
-import Section from "./components/Section";
+import { Card } from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import { initialCards } from "../cards.js";
+import PopupWithForm from "../components/PopupWithForm";
+import PopupWithImage from "../components/PopupWithImage";
+import UserInfo from "../components/UserInfo";
+import Section from "../components/Section";
 
 const settings = {
   formSelector: ".form",
@@ -74,7 +74,9 @@ const imagePopup = new PopupWithImage(".modal_type_preview");
 imagePopup.setEventListeners();
 
 const renderCard = (data) => {
-  section.addItem(data);
+  const card = generateCard(data);
+  const cardElement = card.getCardElement();
+  section.addItem(cardElement);
 };
 
 const generateCard = (data) => {
@@ -87,10 +89,7 @@ const generateCard = (data) => {
 const section = new Section(
   {
     items: initialCards,
-    renderer: (data, wrapper) => {
-      const card = generateCard(data);
-      wrapper.prepend(card.getCardElement());
-    },
+    renderer: renderCard,
   },
   ".photos"
 );

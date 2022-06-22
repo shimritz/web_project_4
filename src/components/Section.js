@@ -11,8 +11,8 @@ class Section {
     });
   }
 
-  addItem(item) {
-    this._renderer(item, this._container);
+  addItem(cardElement) {
+    this._container.prepend(cardElement);
   }
 }
 

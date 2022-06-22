@@ -18,11 +18,19 @@ class Popup {
   open() {
     this._popupElement.classList.add("modal_open");
     document.addEventListener("keydown", this._handleEscClose);
+
+    this._popupElement.addEventListener("mousedown", (evt) => {
+      this._closePopupOnRemoteClick(evt);
+    });
   }
 
   close() {
     this._popupElement.classList.remove("modal_open");
     document.removeEventListener("keydown", this._handleEscClose);
+
+    this._popupElement.removeEventListener("mousedown", (evt) => {
+      this._closePopupOnRemoteClick;
+    });
   }
 
   setEventListeners() {
@@ -31,17 +39,7 @@ class Popup {
       .addEventListener("click", () => {
         this.close();
       });
-    this._popupElement.addEventListener("mousedown", (evt) => {
-      this._closePopupOnRemoteClick(evt);
-    });
-
-    // when close a popup
-    this._popupElement.removeEventListener("mousedown", (evt) => {
-      this._closePopupOnRemoteClick;
-    });
   }
 }
-
-// when open a popup
 
 export default Popup;

@@ -16,10 +16,10 @@ export class Card {
   getCardElement = () => {
     this._cardElement = this._getTemplate();
 
-    this._cardElement.querySelector(".card__image").src = this._link;
-    this._cardElement.querySelector(
-      ".card__image"
-    ).alt = `Photo of ${this._name}`;
+    const imageElement = this._cardElement.querySelector(".card__image");
+    imageElement.src = this._link;
+    imageElement.alt = `Photo of ${this._name}`;
+
     this._cardElement.querySelector(".card__name").textContent = this._name;
 
     this._setEventListener();
