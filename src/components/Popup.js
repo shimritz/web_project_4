@@ -19,18 +19,20 @@ class Popup {
     this._popupElement.classList.add("modal_open");
     document.addEventListener("keydown", this._handleEscClose);
 
-    this._popupElement.addEventListener("mousedown", (evt) => {
-      this._closePopupOnRemoteClick(evt);
-    });
+    this._popupElement.addEventListener(
+      "mousedown",
+      this._closePopupOnRemoteClick
+    );
   }
 
   close() {
     this._popupElement.classList.remove("modal_open");
     document.removeEventListener("keydown", this._handleEscClose);
 
-    this._popupElement.removeEventListener("mousedown", (evt) => {
-      this._closePopupOnRemoteClick;
-    });
+    this._popupElement.removeEventListener(
+      "mousedown",
+      this._closePopupOnRemoteClick
+    );
   }
 
   setEventListeners() {
