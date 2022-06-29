@@ -10,6 +10,7 @@ import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
 import UserInfo from "../components/UserInfo";
 import Section from "../components/Section";
+import { api } from "../components/Api";
 
 const settings = {
   formSelector: ".form",
@@ -44,6 +45,11 @@ const addCardButton = document.querySelector(".profile__add-button");
 
 // wrappers
 const cardTemplateSelector = "#card-template";
+
+api.getInitialCards().then((res) => {
+  section.renderItems(res);
+  console.log("res", res);
+});
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
@@ -94,7 +100,7 @@ const section = new Section(
   ".photos"
 );
 
-section.renderItems();
+// section.renderItems();
 
 const formInputName = document.querySelector(".form__input_type_name");
 const formInputAboutMe = document.querySelector(".form__input_type_about-me");
