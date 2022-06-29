@@ -48,7 +48,12 @@ const cardTemplateSelector = "#card-template";
 
 api.getInitialCards().then((res) => {
   section.renderItems(res);
-  console.log("res", res);
+  // console.log("res", res);
+});
+
+api.getUserInfo().then((res) => {
+  userInfo.setUserInfo({ name: res.name, job: res.about });
+  console.log("user", res);
 });
 
 const userInfo = new UserInfo({

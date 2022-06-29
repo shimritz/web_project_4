@@ -12,7 +12,13 @@ class Api {
       .catch(console.log);
   }
 
-  // other methods for working with the API
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch(console.log);
+  }
 }
 
 export const api = new Api({
