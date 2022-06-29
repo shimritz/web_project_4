@@ -56,13 +56,26 @@ api.getUserInfo().then((res) => {
   console.log("user", res);
 });
 
+// api
+//   .editProfile()
+//   .then((res) => {
+//     console.log("res editProfile=>", res);
+//   })
+//   .catch(console.log);
+
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__about-me",
 });
 
 const editModal = new PopupWithForm(".modal_type_profile", (data) => {
-  userInfo.setUserInfo({ name: data.name, job: data.aboutMe });
+  api
+    .editProfile(data.name, data.aboutMe)
+    .then((res) => {
+      userInfo.setUserInfo({ name: data.name, job: data.aboutMe });
+      console.log("res editProfile", res);
+    })
+    .catch(console.log);
 });
 editModal.setEventListeners();
 
