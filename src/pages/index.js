@@ -83,10 +83,20 @@ editModal.setEventListeners();
 const addCardPopupWithForm = new PopupWithForm(
   ".modal_type_add-card",
   (data) => {
-    renderCard({
-      name: data.title,
-      link: data.image,
-    });
+    console.log(data);
+    api
+      .createCard({
+        name: data.title,
+        link: data.image,
+      })
+      .then((res) => {
+        console.log("data", res);
+        renderCard({
+          name: res.name,
+          link: res.link,
+        });
+      })
+      .catch((err) => console.log(err));
 
     addFormValidator.toggleSubmitButton();
   }
@@ -112,7 +122,6 @@ const generateCard = (data) => {
 // section
 const section = new Section(
   {
-    items: initialCards,
     renderer: renderCard,
   },
   ".photos"

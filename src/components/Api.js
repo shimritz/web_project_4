@@ -19,6 +19,7 @@ class Api {
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
       .catch(console.log);
   }
+
   createCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
