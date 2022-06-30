@@ -1,7 +1,8 @@
 export class Card {
-  constructor({ name, link }, cardSelector, handleCardClick) {
+  constructor({ name, link, likes }, cardSelector, handleCardClick) {
     this._name = name;
     this._link = link;
+    this._likes = likes;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -12,6 +13,11 @@ export class Card {
       .content.querySelector(".card")
       .cloneNode(true);
   }
+  _setLikes() {
+    const likesAmount = this._likes.length;
+    this._cardElement.querySelector(".card__likes-count").textContent =
+      likesAmount;
+  }
 
   getCardElement = () => {
     this._cardElement = this._getTemplate();
@@ -21,6 +27,7 @@ export class Card {
     imageElement.alt = `Photo of ${this._name}`;
 
     this._cardElement.querySelector(".card__name").textContent = this._name;
+    this._setLikes();
 
     this._setEventListener();
 
