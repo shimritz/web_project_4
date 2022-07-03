@@ -30,6 +30,15 @@ class Api {
       .catch(console.log);
   }
 
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      headers: this._headers,
+      method: "DELETE",
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch(console.log);
+  }
+
   editProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,

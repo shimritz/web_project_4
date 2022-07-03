@@ -113,12 +113,22 @@ const renderCard = (data) => {
 
 const generateCard = (data) => {
   // console.log(data);
-  return new Card(
+  const card = new Card(
     data,
     cardTemplateSelector,
     () => imagePopup.open(data.link, data.name),
-    () => confirmModal.open()
+    (id) => {
+      confirmModal.open();
+      confirmModal.setAction(() => {
+        api.deleteCard(id).then((res) => {
+          //remove it from DOM
+          console.log("card is deleted");
+          card.deleteCard();
+        });
+      });
+    }
   );
+  return card;
 };
 
 // section
