@@ -8,6 +8,7 @@ import FormValidator from "../components/FormValidator.js";
 import { initialCards } from "../cards.js";
 import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
+import PopupWithSubmit from "../components/PopupWithSubmit";
 import UserInfo from "../components/UserInfo";
 import Section from "../components/Section";
 import { api } from "../components/Api";
@@ -56,13 +57,6 @@ api.getUserInfo().then((res) => {
   console.log("user", res);
 });
 
-// api
-//   .editProfile()
-//   .then((res) => {
-//     console.log("res editProfile=>", res);
-//   })
-//   .catch(console.log);
-
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__about-me",
@@ -103,6 +97,9 @@ const addCardPopupWithForm = new PopupWithForm(
 );
 addCardPopupWithForm.setEventListeners();
 
+const confirmModal = new PopupWithSubmit(".modal_type_delete-card");
+
+confirmModal.setEventListeners();
 // popupWithImage
 const imagePopup = new PopupWithImage(".modal_type_preview");
 imagePopup.setEventListeners();
@@ -110,13 +107,18 @@ imagePopup.setEventListeners();
 const renderCard = (data) => {
   const card = generateCard(data);
   const cardElement = card.getCardElement();
+
   section.addItem(cardElement);
 };
 
 const generateCard = (data) => {
-  return new Card(data, cardTemplateSelector, (cardName, cardLink) => {
-    imagePopup.open(cardName, cardLink);
-  });
+  // console.log(data);
+  return new Card(
+    data,
+    cardTemplateSelector,
+    () => imagePopup.open(data.link, data.name),
+    () => confirmModal.open()
+  );
 };
 
 // section
