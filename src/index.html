@@ -77,6 +77,32 @@
       </div>
     </div>
 
+    <!-- popup edit avatar -->
+    <div class="modal modal_type_avatar-change">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close-btn modal__close-btn_profile"
+          aria-label="close-button"
+        ></button>
+
+        <form class="form">
+          <h2 class="form__title">Change avatar</h2>
+          <input
+            id="image-input"
+            class="form__input form__input_type_image"
+            type="url"
+            name="image"
+            placeholder="Image URL"
+            required
+          />
+          <span id="image-input-error"></span>
+
+          <button type="submit" class="form__submit">Save</button>
+        </form>
+      </div>
+    </div>
+
     <!-- form-add -->
     <div class="modal modal_type_add-card">
       <div class="modal__container">

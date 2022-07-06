@@ -29,16 +29,19 @@ headerLogo.src = profileLogoSrc;
 // Modals
 const addCardModal = document.querySelector(".modal_type_add-card");
 const profileModal = document.querySelector(".modal_type_profile");
+const avatarEditModal = document.querySelector(".modal_type_avatar-change");
 
 // creating instances
 export const editFormValidator = new FormValidator(settings, profileModal);
 export const addFormValidator = new FormValidator(settings, addCardModal);
+export const avatarFormValidator = new FormValidator(settings, avatarEditModal);
 
 // calling the methods from the instance
 editFormValidator.enableValidation();
 
 addFormValidator.enableValidation();
 
+avatarFormValidator.enableValidation();
 // buttons and other elements
 const openModalButton = document.querySelector(".profile__edit-button");
 
@@ -57,7 +60,7 @@ const cardTemplateSelector = "#card-template";
 //   console.log("user", res);
 // });
 
-let userId;
+var userId;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()]).then(
   ([cardData, userData]) => {
@@ -71,6 +74,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()]).then(
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   jobSelector: ".profile__about-me",
+  avatarSelector: ".profile__avatar",
 });
 
 const editModal = new PopupWithForm(".modal_type_profile", (data) => {
@@ -84,6 +88,19 @@ const editModal = new PopupWithForm(".modal_type_profile", (data) => {
 });
 editModal.setEventListeners();
 
+//edit avatar
+const avatarChangeModal = new PopupWithForm(
+  ".modal_type_avatar-change",
+  (data) => {
+    console.log("avatar-data", data);
+    api.editAvatar(data.image).then((res) => {
+      userInfo.getUserAvatar(res.avatar);
+    });
+  }
+);
+
+avatarChangeModal.setEventListeners();
+
 // addCard
 const addCardPopupWithForm = new PopupWithForm(
   ".modal_type_add-card",
@@ -95,11 +112,6 @@ const addCardPopupWithForm = new PopupWithForm(
         link: data.image,
       })
       .then((res) => {
-        console.log("popo", res);
-        // renderCard({
-        //   name: res.name,
-        //   link: res.link,
-        // });
         renderCard(res);
       })
       .catch((err) => console.log(err));
@@ -117,7 +129,6 @@ const imagePopup = new PopupWithImage(".modal_type_preview");
 imagePopup.setEventListeners();
 
 const renderCard = (data) => {
-  userId = "8b04fa520deb372de9c336dd";
   const card = generateCard(data, userId);
 
   const cardElement = card.getCardElement();
@@ -170,4 +181,8 @@ openModalButton.addEventListener("click", () => {
 
 addCardButton.addEventListener("click", () => {
   addCardPopupWithForm.open();
+});
+
+profileAvatar.addEventListener("click", () => {
+  avatarChangeModal.open();
 });
