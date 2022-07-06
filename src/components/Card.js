@@ -79,11 +79,6 @@ export class Card {
       });
   }
 
-  // _toggleLikeButton(evt) {
-  //   const likeButton = evt.target;
-  //   likeButton.classList.toggle("card__like-btn_type_selected");
-  // }
-
   deleteCard = () => {
     this._cardElement.remove();
     this._cardElement = null;

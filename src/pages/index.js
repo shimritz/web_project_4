@@ -50,16 +50,6 @@ const addCardButton = document.querySelector(".profile__add-button");
 // wrappers
 const cardTemplateSelector = "#card-template";
 
-// api.getInitialCards().then((res) => {
-//   section.renderItems(res);
-//   // console.log("res", res);
-// });
-
-// api.getUserInfo().then((res) => {
-//   userInfo.setUserInfo({ name: res.name, job: res.about });
-//   console.log("user", res);
-// });
-
 var userId;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()]).then(
@@ -78,10 +68,16 @@ const userInfo = new UserInfo({
 });
 
 const editModal = new PopupWithForm(".modal_type_profile", (data) => {
+  //initialText Loading
+
+  editModal.changeButtonText("saving");
   api
     .editProfile(data.name, data.aboutMe)
     .then((res) => {
       userInfo.setUserInfo({ name: data.name, job: data.aboutMe });
+      editModal.changeButtonText("initial");
+
+      editModal.close();
     })
     .catch(console.log);
 });
@@ -104,7 +100,7 @@ avatarChangeModal.setEventListeners();
 const addCardPopupWithForm = new PopupWithForm(
   ".modal_type_add-card",
   (data) => {
-    console.log(data);
+    addCardPopupWithForm.changeButtonText("saving");
     api
       .createCard({
         name: data.title,
@@ -112,6 +108,8 @@ const addCardPopupWithForm = new PopupWithForm(
       })
       .then((res) => {
         renderCard(res);
+        addCardPopupWithForm.changeButtonText("initial");
+        addCardPopupWithForm.close();
       })
       .catch((err) => console.log(err));
 
@@ -175,8 +173,6 @@ const section = new Section(
   },
   ".photos"
 );
-
-// section.renderItems();
 
 const formInputName = document.querySelector(".form__input_type_name");
 const formInputAboutMe = document.querySelector(".form__input_type_about-me");
