@@ -41,10 +41,10 @@
   max-width: 75vw;
 }
 
-.modal_type_delete-card {
+/* .modal_type_delete-card {
   width: 430px;
   height: 181px;
-}
+} */
 .form__title_type_delete-card {
   font-weight: 900;
   font-size: 24px;

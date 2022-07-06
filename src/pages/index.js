@@ -82,7 +82,6 @@ const editModal = new PopupWithForm(".modal_type_profile", (data) => {
     .editProfile(data.name, data.aboutMe)
     .then((res) => {
       userInfo.setUserInfo({ name: data.name, job: data.aboutMe });
-      console.log("res editProfile", res);
     })
     .catch(console.log);
 });
@@ -146,14 +145,24 @@ const generateCard = (data, userId) => {
     (id) => {
       confirmModal.open();
       confirmModal.setAction(() => {
-        api.deleteCard(id).then((res) => {
+        api.deleteCard(id).then(() => {
           //remove it from DOM
           console.log("card is deleted");
           card.deleteCard();
         });
       });
+    },
+    () => {
+      api.addLike(card.getId()).then((res) => {
+        card.setLikes(res.likes);
+      });
+
+      // api.removeLike(cardId).then((res) => {
+      //   console.log("!!!!");
+      // });
     }
   );
+
   return card;
 };
 

@@ -63,6 +63,24 @@ class Api {
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
       .catch(console.log);
   }
+
+  addLike(id) {
+    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+      headers: this._headers,
+      method: "PUT",
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch(console.log);
+  }
+
+  removeLike(id) {
+    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+      headers: this._headers,
+      method: "DELETE",
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch(console.log);
+  }
 }
 
 export const api = new Api({
