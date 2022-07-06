@@ -21,11 +21,11 @@
         <img class="profile__avatar" src=" " alt="user photo" />
         <div class="profile__info">
           <div class="profile__name-container">
-            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h1 class="profile__name"></h1>
 
             <button type="button" class="profile__edit-button"></button>
           </div>
-          <p class="profile__about-me">Explorer</p>
+          <p class="profile__about-me"></p>
         </div>
 
         <button
@@ -77,6 +77,32 @@
       </div>
     </div>
 
+    <!-- popup edit avatar -->
+    <div class="modal modal_type_avatar-change">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close-btn modal__close-btn_profile"
+          aria-label="close-button"
+        ></button>
+
+        <form class="form">
+          <h2 class="form__title">Change avatar</h2>
+          <input
+            id="image-input"
+            class="form__input form__input_type_image"
+            type="url"
+            name="image"
+            placeholder="Image URL"
+            required
+          />
+          <span id="image-input-error"></span>
+
+          <button type="submit" class="form__submit">Save</button>
+        </form>
+      </div>
+    </div>
+
     <!-- form-add -->
     <div class="modal modal_type_add-card">
       <div class="modal__container">
@@ -119,6 +145,21 @@
       </div>
     </div>
 
+    <!-- //form deletecard"ARE YOU SURE" -->
+    <div class="modal modal_type_delete-card">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close-btn modal__close-btn_delete-card"
+          aria-label="close-button"
+        ></button>
+        <h3 class="form__title_type_delete-card">Are you sure?</h3>
+        <form class="form" name="confirm">
+          <button type="submit" class="form__submit">Delete</button>
+        </form>
+      </div>
+    </div>
+
     <!-- popup image -->
     <div class="modal modal_type_preview">
       <div class="modal__container modal__container_type_preview">
@@ -142,11 +183,14 @@
         ></button>
         <div class="card__footer">
           <h2 class="card__name"></h2>
-          <button
-            type="button"
-            class="card__like-btn"
-            aria-label="like button"
-          ></button>
+          <div class="card__likes">
+            <button
+              type="button"
+              class="card__like-btn"
+              aria-label="like button"
+            ></button>
+            <div class="card__likes-count"></div>
+          </div>
         </div>
       </article>
     </template>
