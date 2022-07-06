@@ -1,12 +1,14 @@
 export class Card {
-  constructor(data, cardSelector, handleCardClick, handleDeleteCard) {
-    this._id = data.id;
+  constructor(data, userId, cardSelector, handleCardClick, handleDeleteCard) {
+    this._id = data._id;
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
+    this._userId = userId;
+    this._ownerId = data.owner._id;
   }
 
   _getTemplate() {
@@ -32,6 +34,10 @@ export class Card {
     this._setLikes();
 
     this._setEventListener();
+
+    if (this._ownerId !== this._userId) {
+      this._cardElement.querySelector(".card__bin-btn").style.display = "none";
+    }
 
     return this._cardElement;
   };
@@ -59,8 +65,4 @@ export class Card {
     this._cardElement.remove();
     this._cardElement = null;
   };
-  // _handleDeleteCard = () => {
-  //   this._cardElement.remove();
-  //   this._cardElement = null;
-  // };
 }

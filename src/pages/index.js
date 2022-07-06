@@ -47,15 +47,26 @@ const addCardButton = document.querySelector(".profile__add-button");
 // wrappers
 const cardTemplateSelector = "#card-template";
 
-api.getInitialCards().then((res) => {
-  section.renderItems(res);
-  // console.log("res", res);
-});
+// api.getInitialCards().then((res) => {
+//   section.renderItems(res);
+//   // console.log("res", res);
+// });
 
-api.getUserInfo().then((res) => {
-  userInfo.setUserInfo({ name: res.name, job: res.about });
-  console.log("user", res);
-});
+// api.getUserInfo().then((res) => {
+//   userInfo.setUserInfo({ name: res.name, job: res.about });
+//   console.log("user", res);
+// });
+
+let userId;
+
+Promise.all([api.getInitialCards(), api.getUserInfo()]).then(
+  ([cardData, userData]) => {
+    userId = userData._id;
+
+    section.renderItems(cardData);
+    userInfo.setUserInfo({ name: userData.name, job: userData.about });
+  }
+);
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
@@ -84,11 +95,12 @@ const addCardPopupWithForm = new PopupWithForm(
         link: data.image,
       })
       .then((res) => {
-        console.log("data", res);
-        renderCard({
-          name: res.name,
-          link: res.link,
-        });
+        console.log("popo", res);
+        // renderCard({
+        //   name: res.name,
+        //   link: res.link,
+        // });
+        renderCard(res);
       })
       .catch((err) => console.log(err));
 
@@ -105,18 +117,21 @@ const imagePopup = new PopupWithImage(".modal_type_preview");
 imagePopup.setEventListeners();
 
 const renderCard = (data) => {
-  const card = generateCard(data);
+  userId = "8b04fa520deb372de9c336dd";
+  const card = generateCard(data, userId);
+
   const cardElement = card.getCardElement();
 
   section.addItem(cardElement);
 };
 
-const generateCard = (data) => {
+const generateCard = (data, userId) => {
   // console.log(data);
   const card = new Card(
     data,
+    userId,
     cardTemplateSelector,
-    () => imagePopup.open(data.link, data.name),
+    () => imagePopup.open(data.name, data.link),
     (id) => {
       confirmModal.open();
       confirmModal.setAction(() => {
