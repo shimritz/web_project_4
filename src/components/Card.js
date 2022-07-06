@@ -33,14 +33,17 @@ export class Card {
     this._cardElement.querySelector(".card__likes-count").textContent =
       likesAmount;
 
-    const cardIsLikedByCurrentUser = this._likes.find(
-      (user) => user._id === this._userId
-    );
+    const cardIsLikedByCurrentUser = this.isLiked();
+
     if (cardIsLikedByCurrentUser) {
       this._cardElement
         .querySelector(".card__like-btn")
         .classList.toggle("card__like-btn_type_selected");
     }
+  }
+
+  isLiked() {
+    return this._likes.find((user) => user._id === this._userId);
   }
 
   getCardElement = () => {

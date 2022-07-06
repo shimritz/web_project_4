@@ -153,13 +153,15 @@ const generateCard = (data, userId) => {
       });
     },
     () => {
-      api.addLike(card.getId()).then((res) => {
-        card.setLikes(res.likes);
-      });
-
-      // api.removeLike(cardId).then((res) => {
-      //   console.log("!!!!");
-      // });
+      if (!card.isLiked()) {
+        api.addLike(card.getId()).then((res) => {
+          card.setLikes(res.likes);
+        });
+      } else {
+        api.removeLike(card.getId()).then((res) => {
+          card.setLikes(res.likes);
+        });
+      }
     }
   );
 
