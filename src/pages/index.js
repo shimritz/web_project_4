@@ -4,22 +4,13 @@ import avatarSrc from "../images/profile_photo-image(1).jpg";
 import profileLogoSrc from "../images/Vectorlogo.svg";
 
 import { Card } from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js";
-import { initialCards } from "../cards.js";
 import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
 import PopupWithSubmit from "../components/PopupWithSubmit";
 import UserInfo from "../components/UserInfo";
 import Section from "../components/Section";
 import { api } from "../components/Api";
-
-const settings = {
-  formSelector: ".form",
-  inputSelector: ".form__input",
-  submitButtonSelector: ".form__submit",
-  inactiveButtonClass: "form__submit_disabled",
-  errorClass: "form__error_visible",
-};
+import { formEllemants } from "../utils/constants";
 
 const profileAvatar = document.querySelector(".profile__avatar");
 const headerLogo = document.querySelector(".header__logo");
@@ -27,21 +18,20 @@ profileAvatar.src = avatarSrc;
 headerLogo.src = profileLogoSrc;
 
 // Modals
-const addCardModal = document.querySelector(".modal_type_add-card");
-const profileModal = document.querySelector(".modal_type_profile");
-const avatarEditModal = document.querySelector(".modal_type_avatar-change");
+// const addCardModal = document.querySelector(".modal_type_add-card");
+// const profileModal = document.querySelector(".modal_type_profile");
+// const avatarEditModal = document.querySelector(".modal_type_avatar-change");
 
 // creating instances
-export const editFormValidator = new FormValidator(settings, profileModal);
-export const addFormValidator = new FormValidator(settings, addCardModal);
-export const avatarFormValidator = new FormValidator(settings, avatarEditModal);
+// export const editFormValidator = new FormValidator(settings, profileModal);
+// export const addFormValidator = new FormValidator(settings, addCardModal);
+// export const avatarFormValidator = new FormValidator(settings, avatarEditModal);
 
 // calling the methods from the instance
-editFormValidator.enableValidation();
+// editFormValidator.enableValidation();
+// addFormValidator.enableValidation();
+// avatarFormValidator.enableValidation();
 
-addFormValidator.enableValidation();
-
-avatarFormValidator.enableValidation();
 // buttons and other elements
 const openModalButton = document.querySelector(".profile__edit-button");
 
@@ -80,8 +70,12 @@ const editModal = new PopupWithForm(".modal_type_profile", (data) => {
 
       editModal.close();
     })
-    .catch(console.log);
+    .catch(console.log)
+    .finally(() => {
+      editModal.changeButtonText("initial");
+    });
 });
+
 editModal.setEventListeners();
 
 //edit avatar
@@ -114,7 +108,7 @@ const addCardPopupWithForm = new PopupWithForm(
       })
       .catch((err) => console.log(err));
 
-    addFormValidator.toggleSubmitButton();
+    // addFormValidator.toggleSubmitButton();
   }
 );
 addCardPopupWithForm.setEventListeners();
@@ -122,6 +116,7 @@ addCardPopupWithForm.setEventListeners();
 const confirmModal = new PopupWithSubmit(".modal_type_delete-card");
 
 confirmModal.setEventListeners();
+
 // popupWithImage
 const imagePopup = new PopupWithImage(".modal_type_preview");
 imagePopup.setEventListeners();
@@ -146,7 +141,6 @@ const generateCard = (data, userId) => {
       confirmModal.setAction(() => {
         api.deleteCard(id).then(() => {
           //remove it from DOM
-          console.log("card is deleted");
           card.deleteCard();
         });
       });
