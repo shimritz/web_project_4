@@ -1,17 +1,26 @@
 import Popup from "./Popup.js";
 
 class PopupWithForm extends Popup {
-  constructor(popupSelector, handleSubmit) {
+  constructor(
+    popupSelector,
+    handleSubmit,
+    resetValidation,
+    disableSubmitButton
+  ) {
     super(popupSelector); //calling the contructor of parent Popup
     this._handleSubmit = handleSubmit;
     this._form = this._popupElement.querySelector(".form");
+
+    this._resetValidation = resetValidation;
+    this._disableSubmitButton = disableSubmitButton;
+    this._formInputs = [...this._popupElement.querySelectorAll(".form__input")];
+    this._submitButton = this._form.querySelector(".form__submit");
   }
 
   _getInputValues() {
-    const inputs = [...this._popupElement.querySelectorAll(".form__input")];
     const inputValues = {};
 
-    inputs.forEach((input) => {
+    this._formInputs.forEach((input) => {
       inputValues[input.name] = input.value;
     });
 
@@ -23,22 +32,26 @@ class PopupWithForm extends Popup {
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleSubmit(this._getInputValues());
-      // this.close();
     });
   }
 
   close() {
     super.close();
     this._form.reset();
+    this._resetValidation();
+  }
+
+  open() {
+    super.open();
+    this._disableSubmitButton();
   }
 
   changeButtonText(textType) {
-    const button = this._form.querySelector(".form__submit");
     if (textType === "saving") {
-      button.textContent = "saving...";
+      this._submitButton.textContent = "saving...";
     }
     if (textType === "initial") {
-      button.textContent = "save";
+      this._submitButton.textContent = "save";
     }
   }
 }

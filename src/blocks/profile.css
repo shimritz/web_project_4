@@ -13,6 +13,16 @@
   margin: 0;
 }
 
+.profile__avatar:hover {
+  opacity: 0.6;
+  cursor: pointer;
+  background-image: url("../images/edit-pen.svg");
+  /* background-image: url("../images/Vector-pencil.svg"); */
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .profile__info {
   display: flex;
   max-width: 450px;

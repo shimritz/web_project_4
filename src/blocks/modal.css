@@ -22,7 +22,9 @@
   /* width: 430px; */
 }
 .modal__popup-image {
-  max-width: 100%;
+  /* max-width: 100%; */
+  width: 75vw;
+  height: 75vh;
 }
 .modal_open {
   display: flex;
@@ -38,7 +40,8 @@
 
 .modal_type_preview .modal__container {
   background-color: transparent;
-  max-width: 75vw;
+  /* max-width: 75vw; */
+  /* height: 75vh; */
 }
 
 .form__title_type_delete-card {

@@ -2,7 +2,7 @@ class UserInfo {
   constructor({ nameSelector, jobSelector, avatarSelector }) {
     this._nameElement = document.querySelector(nameSelector);
     this._jobElement = document.querySelector(jobSelector);
-    this._avatarElement = document.querySelector(avatarSelector); //
+    this._avatarElement = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
@@ -20,7 +20,6 @@ class UserInfo {
 
   getUserAvatar(avatar) {
     this._avatarElement.src = avatar;
-    console.log("avatar", this._avatarElement.src);
   }
 }
 
