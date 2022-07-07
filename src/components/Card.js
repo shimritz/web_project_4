@@ -38,7 +38,11 @@ export class Card {
     if (cardIsLikedByCurrentUser) {
       this._cardElement
         .querySelector(".card__like-btn")
-        .classList.toggle("card__like-btn_type_selected");
+        .classList.add("card__like-btn_type_selected");
+    } else {
+      this._cardElement
+        .querySelector(".card__like-btn")
+        .classList.remove("card__like-btn_type_selected");
     }
   }
 
