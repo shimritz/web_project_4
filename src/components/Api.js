@@ -53,11 +53,12 @@ class Api {
   }
 
   editAvatar(avatar) {
+    console.log("avatar from editAvatar func", avatar);
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       headers: this._headers,
       method: "PATCH",
       body: JSON.stringify({
-        avatar,
+        avatar: avatar,
       }),
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))

@@ -58,6 +58,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()]).then(
 
     section.renderItems(cardData);
     userInfo.setUserInfo({ name: userData.name, job: userData.about });
+    userInfo.getUserAvatar(userData.avatar);
   }
 );
 
@@ -87,9 +88,9 @@ editModal.setEventListeners();
 const avatarChangeModal = new PopupWithForm(
   ".modal_type_avatar-change",
   (data) => {
-    console.log("avatar-data", data);
     api.editAvatar(data.image).then((res) => {
       userInfo.getUserAvatar(res.avatar);
+      avatarChangeModal.close();
     });
   }
 );
