@@ -46,6 +46,11 @@ class PopupWithForm extends Popup {
     this._disableSubmitButton();
   }
 
+  open() {
+    super.open();
+    this._validator.toggleSubmitButton();
+  }
+
   changeButtonText(textType) {
     if (textType === "saving") {
       this._submitButton.textContent = "saving...";
