@@ -10,13 +10,17 @@ import PopupWithSubmit from "../components/PopupWithSubmit";
 import UserInfo from "../components/UserInfo";
 import Section from "../components/Section";
 import { api } from "../components/Api";
-import { settings } from "../utils/constants";
+import {
+  settings,
+  cardTemplateSelector,
+  addCardModal,
+  profileModal,
+  avatarEditModal,
+} from "../utils/constants";
 import FormValidator from "../components/FormValidator";
 
 // TODO: change to get the string from settings
-const addCardModal = document.querySelector(".modal_type_add-card");
-const profileModal = document.querySelector(".modal_type_profile");
-const avatarEditModal = document.querySelector(".modal_type_avatar-change");
+
 const editFormValidator = new FormValidator(settings, profileModal);
 const addFormValidator = new FormValidator(settings, addCardModal);
 const avatarFormValidator = new FormValidator(settings, avatarEditModal);
@@ -33,9 +37,6 @@ headerLogo.src = profileLogoSrc;
 const openModalButton = document.querySelector(".profile__edit-button");
 
 const addCardButton = document.querySelector(".profile__add-button");
-
-// wrappers
-const cardTemplateSelector = "#card-template";
 
 var userId;
 
@@ -83,13 +84,17 @@ editModal.setEventListeners();
 const avatarChangeModal = new PopupWithForm(
   ".modal_type_avatar-change",
   (data) => {
+    avatarChangeModal.changeButtonText("saving");
     api
       .editAvatar(data.image)
       .then((res) => {
         userInfo.getUserAvatar(res.avatar);
         avatarChangeModal.close();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        avatarChangeModal.changeButtonText("initial");
+      });
   },
   avatarFormValidator.resetValidation,
   avatarFormValidator.disableSubmitButton
@@ -112,7 +117,10 @@ const addCardPopupWithForm = new PopupWithForm(
         addCardPopupWithForm.changeButtonText("initial");
         addCardPopupWithForm.close();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        addCardPopupWithForm.changeButtonText("initial");
+      });
   },
   addFormValidator.resetValidation,
   addFormValidator.disableSubmitButton
