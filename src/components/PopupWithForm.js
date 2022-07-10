@@ -7,10 +7,9 @@ class PopupWithForm extends Popup {
     resetValidation,
     disableSubmitButton
   ) {
-    super(popupSelector); //calling the contructor of parent Popup
+    super(popupSelector);
     this._handleSubmit = handleSubmit;
     this._form = this._popupElement.querySelector(".form");
-
     this._resetValidation = resetValidation;
     this._disableSubmitButton = disableSubmitButton;
     this._formInputs = [...this._popupElement.querySelectorAll(".form__input")];
@@ -44,11 +43,6 @@ class PopupWithForm extends Popup {
   open() {
     super.open();
     this._disableSubmitButton();
-  }
-
-  open() {
-    super.open();
-    this._validator.toggleSubmitButton();
   }
 
   changeButtonText(textType) {

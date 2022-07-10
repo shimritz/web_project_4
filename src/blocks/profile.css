@@ -11,16 +11,38 @@
   height: 120px;
   width: 120px;
   margin: 0;
+  position: relative;
+  /* align-items: center; */
 }
 
-.profile__avatar:hover {
-  opacity: 0.6;
+.profile__avatar-container {
+  position: relative;
+}
+
+.profile__avatar-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.4;
+  background-color: black;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
   cursor: pointer;
-  background-image: url("../images/edit-pen.svg");
-  /* background-image: url("../images/Vector-pencil.svg"); */
-  background-color: transparent;
+  z-index: 1;
+}
+
+.profile__avatar-container:hover::before {
+  background-image: url(../images/edit-pen.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 26px;
+  opacity: 0.8;
+  align-items: center;
+  justify-content: center;
 }
 
 .profile__info {
