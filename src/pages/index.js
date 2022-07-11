@@ -16,6 +16,10 @@ import {
   addCardModal,
   profileModal,
   avatarEditModal,
+  profileAvatar,
+  headerLogo,
+  openModalButton,
+  addCardButton,
 } from "../utils/constants";
 import FormValidator from "../components/FormValidator";
 
@@ -28,15 +32,8 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
-const profileAvatar = document.querySelector(".profile__avatar-container");
-const headerLogo = document.querySelector(".header__logo");
 profileAvatar.src = avatarSrc;
 headerLogo.src = profileLogoSrc;
-
-// buttons and other elements
-const openModalButton = document.querySelector(".profile__edit-button");
-
-const addCardButton = document.querySelector(".profile__add-button");
 
 var userId;
 
