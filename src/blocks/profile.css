@@ -36,7 +36,7 @@
 }
 
 .profile__avatar-container:hover::before {
-  background-image: url(../images/edit-pen.svg);
+  background-image: url(../images/Vector-pencil.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 26px;
