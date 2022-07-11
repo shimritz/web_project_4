@@ -28,7 +28,7 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
-const profileAvatar = document.querySelector(".profile__avatar");
+const profileAvatar = document.querySelector(".profile__avatar-container");
 const headerLogo = document.querySelector(".header__logo");
 profileAvatar.src = avatarSrc;
 headerLogo.src = profileLogoSrc;
