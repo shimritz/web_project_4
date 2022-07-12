@@ -29,16 +29,7 @@ export class Card {
 
   setLikes(newLikes) {
     this._likes = newLikes;
-    const likesAmount = this._likes.length;
-    this._cardLikesCount.textContent = likesAmount;
-
-    const cardIsLikedByCurrentUser = this.isLiked();
-
-    if (cardIsLikedByCurrentUser) {
-      this._cardLikeButton.classList.add("card__like-btn_type_selected");
-    } else {
-      this._cardLikeButton.classList.remove("card__like-btn_type_selected");
-    }
+    this._renderLikes();
   }
 
   isLiked() {
@@ -77,6 +68,19 @@ export class Card {
 
   getId() {
     return this._id;
+  }
+
+  _renderLikes() {
+    const likesAmount = this._likes.length;
+    this._cardLikesCount.textContent = likesAmount;
+
+    const cardIsLikedByCurrentUser = this.isLiked();
+
+    if (cardIsLikedByCurrentUser) {
+      this._cardLikeButton.classList.add("card__like-btn_type_selected");
+    } else {
+      this._cardLikeButton.classList.remove("card__like-btn_type_selected");
+    }
   }
 
   _getTemplate() {

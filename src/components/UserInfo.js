@@ -18,7 +18,7 @@ class UserInfo {
     // this._avatarElement.textContent = avatar;
   }
 
-  getUserAvatar(avatar) {
+  setUserAvatar(avatar) {
     this._avatarElement.src = avatar;
   }
 }

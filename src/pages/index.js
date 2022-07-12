@@ -35,7 +35,7 @@ avatarFormValidator.enableValidation();
 profileAvatar.src = avatarSrc;
 headerLogo.src = profileLogoSrc;
 
-var userId;
+let userId;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([cardData, userData]) => {
@@ -43,7 +43,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 
     section.renderItems(cardData);
     userInfo.setUserInfo({ name: userData.name, job: userData.about });
-    userInfo.getUserAvatar(userData.avatar);
+    userInfo.setUserAvatar(userData.avatar);
   })
   .catch(console.error);
 
@@ -85,7 +85,7 @@ const avatarChangeModal = new PopupWithForm(
     api
       .editAvatar(data.image)
       .then((res) => {
-        userInfo.getUserAvatar(res.avatar);
+        userInfo.setUserAvatar(res.avatar);
         avatarChangeModal.close();
       })
       .catch(console.error)
@@ -149,6 +149,7 @@ const generateCard = (data, userId) => {
     (id) => {
       confirmModal.open();
       confirmModal.setAction(() => {
+        confirmModal.changeButtonText("saving");
         api
           .deleteCard(id)
           .then(() => {
@@ -156,7 +157,10 @@ const generateCard = (data, userId) => {
             confirmModal.close();
             card.deleteCard();
           })
-          .catch(console.error);
+          .catch(console.error)
+          .finally(() => {
+            confirmModal.changeButtonText("initial");
+          });
       });
     },
     () => {
