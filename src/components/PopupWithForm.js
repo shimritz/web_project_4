@@ -14,6 +14,7 @@ class PopupWithForm extends Popup {
     this._disableSubmitButton = disableSubmitButton;
     this._formInputs = [...this._popupElement.querySelectorAll(".form__input")];
     this._submitButton = this._form.querySelector(".form__submit");
+    this._submitButtonText = this._submitButton.textContent;
   }
 
   _getInputValues() {
@@ -50,7 +51,7 @@ class PopupWithForm extends Popup {
       this._submitButton.textContent = "saving...";
     }
     if (textType === "initial") {
-      this._submitButton.textContent = "Create";
+      this._submitButton.textContent = this._submitButtonText;
     }
   }
 }
