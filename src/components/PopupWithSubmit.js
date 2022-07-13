@@ -12,7 +12,7 @@ class PopupWithSubmit extends Popup {
       this._submitButton.textContent = "saving...";
     }
     if (textType === "initial") {
-      this._submitButton.textContent = "save";
+      this._submitButton.textContent = "Delete";
     }
   }
 
